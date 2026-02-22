@@ -10,11 +10,11 @@ Inspired by [ServerContainers/minimail](https://github.com/ServerContainers/mini
 - TLS_KEY: private key, in PEM format
 - TLS_CERT: public certificate, in PEM format
 
-TLS_KEY and TLS_CERT must both be set to enable TLS. As the documentation for [`docker-mailserver`](https://docker-mailserver.github.io/docker-mailserver/latest/config/security/ssl/#example-using-lets-encrypt-certificates-with-a-synology-nas) notes, Synology NAS generated Let's Encrypt certificates are added with a random directory name under `/usr/syno/etc/certificate/_archive/`. Identify the correct folder name and add the following to `compose.yaml`:
+TLS_KEY and TLS_CERT must both be set to enable TLS. As the `docker-mailserver` [documentation](https://docker-mailserver.github.io/docker-mailserver/latest/config/security/ssl/#example-using-lets-encrypt-certificates-with-a-synology-nas) notes, Synology NAS generated Let's Encrypt certificates are added with a random directory name under `/usr/syno/etc/certificate/_archive/`. Identify the correct directory name and add the following to `compose.yaml`:
 
 ```yaml
 volumes:
-  - /usr/syno/etc/certificate/_archive/<your-folder>:/opt/tls
+  - /usr/syno/etc/certificate/_archive/<directory>:/opt/tls
 environment:
   - TLS_KEY=/opt/tls/privkey.pem
   - TLS_CERT=/opt/tls/fullchain.pem
