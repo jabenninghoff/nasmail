@@ -19,7 +19,6 @@ then
     entrypoint_log "configuring TLS"
     postconf -e 'smtp_tls_security_level = may'
     postconf -e 'smtpd_tls_security_level = may'
-    postconf -e 'smtp_tls_note_starttls_offer = yes'
     postconf -e "smtpd_tls_chain_files = ${TLS_KEY},${TLS_CERT}"
     postconf -e 'smtp_tls_loglevel = 1'
     postconf -e 'smtpd_tls_loglevel = 1'
