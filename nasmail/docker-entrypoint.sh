@@ -1,16 +1,16 @@
 #!/bin/sh
 
 entrypoint_log() {
-    echo "$(date -Iseconds) ${MAIL_HOST} docker-entrypoint: $*"
+    echo "$(date -Iseconds) ${MAIL_HOST} nasmail/docker-entrypoint: $*"
 }
 
 if [ -z "${MAIL_HOST}" ]
 then
     MAIL_HOST='nasmail.local'
-    entrypoint_log "MAIL_HOST not set, using default: ${MAIL_HOST}"
+    entrypoint_log "MAIL_HOST not set, using default ${MAIL_HOST}"
 fi
 
-entrypoint_log "nasmail starting with hostname: ${MAIL_HOST}"
+entrypoint_log "starting with hostname ${MAIL_HOST}"
 postconf -e "myhostname = ${MAIL_HOST}"
 
 # TLS
@@ -28,7 +28,7 @@ then
     postconf -e 'smtpd_tls_auth_only = yes'
     postconf -M submission/inet='submission inet n - n - - smtpd -o smtpd_tls_security_level=encrypt'
 else
-    entrypoint_log "warning: TLS_KEY or TLS_CERT not set, TLS disabled"
+    entrypoint_log "warning - TLS_KEY or TLS_CERT not set, TLS disabled"
 fi
 
 exec "$@"
