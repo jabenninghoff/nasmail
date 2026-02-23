@@ -10,8 +10,50 @@ then
     entrypoint_log "MAIL_HOST not set, using default ${MAIL_HOST}"
 fi
 
-entrypoint_log "starting with hostname ${MAIL_HOST}"
+entrypoint_log "using hostname ${MAIL_HOST}"
 postconf -e "myhostname = ${MAIL_HOST}"
+
+if [ ! -f '/opt/users/nasmail-users' ]
+then
+    entrypoint_log "warning - /opt/users/nasmail-users not found, using default user nasmail:nasmail"
+    # shellcheck disable=SC2016
+    echo 'nasmail@nasmail.local:{BLF-CRYPT}$2y$05$hTm9v3j7tLLwKpbpwwCXTOMYwTdmFaARo7MLzXuTrjACToEJ9999y:' > /opt/users/nasmail-users
+fi
+
+# parse nasmail-users and generate postfix maps
+entrypoint_log "generating postfix maps"
+rm /etc/postfix/vmailbox /etc/postfix/virtual 2>/dev/null
+while IFS=: read -r email _ _ _ aliases _
+do
+    entrypoint_log "adding user ${email}"
+    echo "${email} vmail" >> /etc/postfix/vmailbox
+    echo "${email}" >> /tmp/all-emails
+    for alias in ${aliases}
+    do
+        entrypoint_log "adding alias ${alias} for ${email}"
+        echo "${alias} ${email}" >> /etc/postfix/virtual
+        echo "${alias}" >> /tmp/all-emails
+    done
+done </opt/users/nasmail-users
+
+# extract unique email domains and configure postfix
+EMAIL_DOMAINS=$(awk -F@ '{print $2}' /tmp/all-emails | sort -u | xargs)
+entrypoint_log "configuring virtual_mailbox_domains with ${EMAIL_DOMAINS}"
+postconf -e "virtual_mailbox_domains = ${EMAIL_DOMAINS}"
+
+# ensure postmaster exists for each domain
+for domain in ${EMAIL_DOMAINS}
+do
+    postmaster="$(grep ^postmaster@${domain} /tmp/all-emails | head -n 1)"
+    if [ -z "${postmaster}" ]
+    then
+        email="$(grep @${domain} /tmp/all-emails | head -n 1)"
+        entrypoint_log "warning - no postmaster found for domain ${domain}, using ${email}"
+        echo "postmaster@${domain} ${email}" >> /etc/postfix/virtual
+    fi
+done
+
+rm /tmp/all-emails
 
 # TLS
 if [ -n "${TLS_KEY}" ] && [ -n "${TLS_CERT}" ]
