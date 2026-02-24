@@ -52,8 +52,6 @@ The docker entrypoint script sets the Dovecot postmaster address to the first po
 
 The image exports IMAP (143) and IMAPS (993), and the volume `/var/vmail` (for mail storage).
 
-**TODO:** verify SASL authentication.
-
 ## runit
 
 nasmail uses [runit](https://smarden.org/runit/) to manage Postfix and Dovecot as system services.
