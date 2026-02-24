@@ -1,4 +1,5 @@
 #!/bin/sh
+set -e
 
 entrypoint_log() {
     # match format of postfix, dovecot logs
@@ -22,7 +23,9 @@ then
 fi
 
 # parse nasmail-users and generate postfix maps
-rm /etc/postfix/vmailbox /etc/postfix/virtual 2>/dev/null
+[ -f /etc/postfix/vmailbox ] && rm /etc/postfix/vmailbox
+[ -f /etc/postfix/virtual ] && rm /etc/postfix/virtual
+[ -f /tmp/all-emails ] && rm /tmp/all-emails
 while IFS=: read -r email _ _ _ aliases _
 do
     entrypoint_log "adding user ${email}"
@@ -44,10 +47,10 @@ postconf -e "virtual_mailbox_domains = ${EMAIL_DOMAINS}"
 # ensure postmaster exists for each domain
 for domain in ${EMAIL_DOMAINS}
 do
-    postmaster="$(grep ^postmaster@${domain} /tmp/all-emails | head -n 1)"
+    postmaster="$(grep -F postmaster@${domain} /tmp/all-emails | head -n 1)"
     if [ -z "${postmaster}" ]
     then
-        email="$(grep @${domain} /tmp/all-emails | head -n 1)"
+        email="$(grep -F @${domain} /tmp/all-emails | head -n 1)"
         entrypoint_log "warning: no postmaster found for domain ${domain}, using ${email}"
         echo "postmaster@${domain} ${email}" >> /etc/postfix/virtual
         echo "postmaster@${domain}" >> /tmp/all-emails
@@ -55,7 +58,7 @@ do
 done
 
 # use first postmaster for dovecot
-dovecot_postmaster="$(grep ^postmaster@ /tmp/all-emails | head -n 1)"
+dovecot_postmaster="$(grep -F postmaster@ /tmp/all-emails | head -n 1)"
 entrypoint_log "using dovecot postmaster ${dovecot_postmaster}"
 echo "postmaster_address = ${dovecot_postmaster}" >> /etc/dovecot/dovecot.conf
 
