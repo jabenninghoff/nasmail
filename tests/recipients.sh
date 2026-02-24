@@ -2,7 +2,7 @@
 
 cat <<'EOF'
 # Test that Postfix accepts mail for defined virtual users and aliases only
-# requires email: nasmail@nasmail.test, aliases: postmaster@nasmail.test, abuse@nasmail.test
+# requires host: mail.nasmail.test, email: nasmail@nasmail.test, aliases: postmaster@nasmail.test, abuse@nasmail.test
 # other recipients should be rejected with error 550 or 454
 
 EHLO localhost
@@ -18,6 +18,10 @@ RCPT To: abuse@nasmail.test
 RCPT To: nobody@nasmail.test
 RCPT To: nasmail@mail.nasmail.test
 RCPT To: nobody@example.com
+
+# local users should also be rejected
+RCPT To: root@mail.nasmail.test
+RCPT To: dockervmail@mail.nasmail.test
 
 DATA
 Subject: Test email
