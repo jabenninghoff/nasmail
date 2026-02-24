@@ -1,0 +1,17 @@
+services:
+  nasmail:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "25:25" # SMTP
+      - "143:143" # IMAP
+      - "587:587" # Submission
+      - "993:993" # IMAPS
+    volumes:
+      - ${CERTS}:/opt/tls:ro
+      - ${USERS}:/opt/users:ro
+      - ${VMAIL}:/var/vmail
+    environment:
+      - MAIL_HOST=${MAIL_HOST}
+      - TLS_KEY=${TLS_KEY}
+      - TLS_CERT=${TLS_CERT}
