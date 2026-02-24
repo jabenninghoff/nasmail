@@ -1,13 +1,14 @@
 #!/bin/sh
 
 entrypoint_log() {
-    echo "$(date -Iseconds) ${MAIL_HOST} nasmail/docker-entrypoint: $*"
+    # match format of postfix, dovecot logs
+    echo "$(date '+%b %d %H:%M:%S') nasmail: $*"
 }
 
 if [ -z "${MAIL_HOST}" ]
 then
     MAIL_HOST='nasmail.local'
-    entrypoint_log "MAIL_HOST not set, using default hostname ${MAIL_HOST}"
+    entrypoint_log "warning: MAIL_HOST not set, using default hostname ${MAIL_HOST}"
 fi
 
 entrypoint_log "using hostname ${MAIL_HOST}"
@@ -15,7 +16,7 @@ postconf -e "myhostname = ${MAIL_HOST}"
 
 if [ ! -f '/opt/users/nasmail-users' ]
 then
-    entrypoint_log "warning - /opt/users/nasmail-users not found, using default user nasmail:nasmail"
+    entrypoint_log "warning: /opt/users/nasmail-users not found, using default credentials 'nasmail@nasmail.local:nasmail'"
     # shellcheck disable=SC2016
     echo 'nasmail@nasmail.local:{BLF-CRYPT}$2y$05$hTm9v3j7tLLwKpbpwwCXTOMYwTdmFaARo7MLzXuTrjACToEJ9999y:' > /opt/users/nasmail-users
 fi
@@ -47,7 +48,7 @@ do
     if [ -z "${postmaster}" ]
     then
         email="$(grep @${domain} /tmp/all-emails | head -n 1)"
-        entrypoint_log "warning - no postmaster found for domain ${domain}, using ${email}"
+        entrypoint_log "warning: no postmaster found for domain ${domain}, using ${email}"
         echo "postmaster@${domain} ${email}" >> /etc/postfix/virtual
         echo "postmaster@${domain} ${email}" >> /tmp/all-emails
     fi
@@ -77,7 +78,7 @@ then
     echo "ssl_server_key_file = ${TLS_KEY}" >> /etc/dovecot/dovecot.conf
     echo "ssl_server_cert_file = ${TLS_CERT}" >> /etc/dovecot/dovecot.conf
 else
-    entrypoint_log "warning - TLS_KEY or TLS_CERT not set, TLS disabled"
+    entrypoint_log "warning: TLS_KEY or TLS_CERT not set, TLS disabled"
 fi
 
 exec "$@"
