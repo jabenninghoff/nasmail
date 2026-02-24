@@ -9,8 +9,8 @@ Inspired by [ServerContainers/minimail](https://github.com/ServerContainers/mini
 ## Environment Variables
 
 - `MAIL_HOST`: fully qualified domain name, defaults to nasmail.local
-- `TLS_KEY`: private key, in PEM format
-- `TLS_CERT`: public certificate, in PEM format
+- `TLS_KEY`: path to private key, in PEM format
+- `TLS_CERT`: path to public certificate, in PEM format
 
 `TLS_KEY` and `TLS_CERT` must both be set to enable TLS. As the `docker-mailserver` [documentation](https://docker-mailserver.github.io/docker-mailserver/latest/config/security/ssl/#example-using-lets-encrypt-certificates-with-a-synology-nas) notes, Synology NAS generated Let's Encrypt certificates are added with a random directory name under `/usr/syno/etc/certificate/_archive/`. Identify the correct directory name and add the following to `compose.yaml`:
 
