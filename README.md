@@ -1,6 +1,6 @@
 # nasmail
 
-Lightweight container optimized for NAS hosted private or archived mail.
+Lightweight container optimized for NAS hosted private or archived mail. By design, the mail server only accepts email for configured users or aliases, and rejects relayed mail. It can be used to store an online archive of a retired email account, or as a private server for monitoring messages. It is intended to be deployed without a [MX record](https://en.wikipedia.org/wiki/MX_record) - instead, clients connect directly to send mail. Using a non-standard port will additionally reduce the chance of spam.
 
 Inspired by [ServerContainers/minimail](https://github.com/ServerContainers/minimail).
 
@@ -36,8 +36,20 @@ The email address or alias `postmaster` must be set for each domain - if it is n
 
 Postfix uses a configuration based on minimail, with help from [Ubuntu](https://documentation.ubuntu.com/server/how-to/mail-services/install-postfix/) and [Arch](https://wiki.archlinux.org/title/Virtual_user_mail_system_with_Postfix,_Dovecot_and_Roundcube) documentation for integration with Dovecot.
 
-The static configuration enables Dovecot SASL, directs mail logs to standard output (customary on Docker), disables local mail, enables virtual mail (and aliases) using Dovecot, and adds a [MSA](https://en.wikipedia.org/wiki/Message_submission_agent) on port 587.
+The static configuration enables Dovecot SASL authentication, directs mail logs to standard output (customary on Docker), disables local mail, enables virtual mail (and aliases) using Dovecot, and adds a [MSA](https://en.wikipedia.org/wiki/Message_submission_agent) on port 587.
 
 The docker entrypoint script sets the Postfix hostname (FQDN), parses `nasmail-users` to create virtual users, aliases, and domains, and configures TLS if `TLS_KEY` and `TLS_CERT` are set. If using TLS, the script requires TLS encryption for SASL authentication and the MSA.
 
 The image exports SMTP (25) and submission (587), and the volumes `/opt/tls` (for certificates) and `/opt/users` (for users).
+
+## Dovecot
+
+Dovecot 2.4 introduced breaking [changes](https://doc.dovecot.org/2.4.2/installation/upgrade/2.3-to-2.4.html) in the configuration format. The Dovecot configuration is built from the official [Quick Configuration](https://doc.dovecot.org/2.4.2/core/config/quick.html) and [Docker image](https://github.com/dovecot/docker/tree/main/2.4.2), using the minimail configuration as a reference. To simplify the configuration, a single file, `dovecot.conf` is used.
+
+The static configuration directs logs to standard output and standard error, sets standard mailboxes (Drafts, Junk, Sent, Trash), configures `/var/vmail` for mail storage using the Maildir format, enables SASL authentication, and mail delivery using LMTP.
+
+The docker entrypoint script sets the Dovecot postmaster address to the first postmaster email address or alias from the user file, and configures TLS if `TLS_KEY` and `TLS_CERT` are set.
+
+The image exports IMAP (143) and IMAPS (993), and the volume `/var/vmail` (for mail storage).
+
+**TODO:** add [Sieve](https://doc.dovecot.org/2.4.2/installation/sieve.html)?, verify SASL authentication.

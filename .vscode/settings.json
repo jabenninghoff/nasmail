@@ -1,6 +1,9 @@
 {
     "cSpell.words": [
         "gecos",
+        "IMAPS",
+        "LMTP",
+        "Maildir",
         "minimail",
         "nasmail",
         "SASL"
