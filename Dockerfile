@@ -32,4 +32,4 @@ EXPOSE 143 993
 VOLUME [ "/var/vmail" ]
 
 ENTRYPOINT [ "/opt/nasmail/docker-entrypoint.sh" ]
-CMD [ "postfix", "start-fg" ]
+CMD [ "runsvdir", "-P", "/opt/nasmail/runit" ]
