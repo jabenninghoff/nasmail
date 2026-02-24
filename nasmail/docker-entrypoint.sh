@@ -7,7 +7,7 @@ entrypoint_log() {
 if [ -z "${MAIL_HOST}" ]
 then
     MAIL_HOST='nasmail.local'
-    entrypoint_log "MAIL_HOST not set, using default ${MAIL_HOST}"
+    entrypoint_log "MAIL_HOST not set, using default hostname ${MAIL_HOST}"
 fi
 
 entrypoint_log "using hostname ${MAIL_HOST}"
@@ -21,7 +21,6 @@ then
 fi
 
 # parse nasmail-users and generate postfix maps
-entrypoint_log "generating postfix maps"
 rm /etc/postfix/vmailbox /etc/postfix/virtual 2>/dev/null
 while IFS=: read -r email _ _ _ aliases _
 do
@@ -38,7 +37,7 @@ done </opt/users/nasmail-users
 
 # extract unique email domains and configure postfix
 EMAIL_DOMAINS=$(awk -F@ '{print $2}' /tmp/all-emails | sort -u | xargs)
-entrypoint_log "configuring virtual_mailbox_domains with ${EMAIL_DOMAINS}"
+entrypoint_log "using domains ${EMAIL_DOMAINS}"
 postconf -e "virtual_mailbox_domains = ${EMAIL_DOMAINS}"
 
 # ensure postmaster exists for each domain
@@ -50,15 +49,21 @@ do
         email="$(grep @${domain} /tmp/all-emails | head -n 1)"
         entrypoint_log "warning - no postmaster found for domain ${domain}, using ${email}"
         echo "postmaster@${domain} ${email}" >> /etc/postfix/virtual
+        echo "postmaster@${domain} ${email}" >> /tmp/all-emails
     fi
 done
+
+# use first postmaster for dovecot
+dovecot_postmaster="$(grep ^postmaster@ /tmp/all-emails | head -n 1)"
+entrypoint_log "using dovecot postmaster ${dovecot_postmaster}"
+echo "postmaster_address = ${dovecot_postmaster}" >> /etc/dovecot/dovecot.conf
 
 rm /tmp/all-emails
 
 # TLS
 if [ -n "${TLS_KEY}" ] && [ -n "${TLS_CERT}" ]
 then
-    entrypoint_log "configuring TLS"
+    entrypoint_log "enabling TLS"
     postconf -e 'smtp_tls_security_level = may'
     postconf -e 'smtpd_tls_security_level = may'
     postconf -e "smtpd_tls_chain_files = ${TLS_KEY},${TLS_CERT}"
@@ -68,6 +73,9 @@ then
     # secure auth and submission
     postconf -e 'smtpd_tls_auth_only = yes'
     postconf -M submission/inet='submission inet n - n - - smtpd -o smtpd_tls_security_level=encrypt'
+    # dovecot TLS config
+    echo "ssl_server_key_file = ${TLS_KEY}" >> /etc/dovecot/dovecot.conf
+    echo "ssl_server_cert_file = ${TLS_CERT}" >> /etc/dovecot/dovecot.conf
 else
     entrypoint_log "warning - TLS_KEY or TLS_CERT not set, TLS disabled"
 fi

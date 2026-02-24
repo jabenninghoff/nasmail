@@ -5,6 +5,7 @@ cat <<'EOF'
 # requires email: nasmail@nasmail.test, aliases: postmaster@nasmail.test, abuse@nasmail.test
 # other recipients should be rejected with error 550 or 454
 
+EHLO localhost
 HELO localhost
 MAIL From: nobody@example.com
 

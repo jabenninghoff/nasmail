@@ -2,10 +2,11 @@ FROM alpine
 
 RUN apk add --no-cache runit postfix dovecot dovecot-lmtpd
 
-RUN mkdir -p /opt/tls /opt/users
+COPY nasmail/ /opt/nasmail/
 
 # Postfix static configuration
-RUN postconf -e 'smtpd_sasl_type = dovecot' && \
+RUN mkdir -p /opt/tls /opt/users && \
+    postconf -e 'smtpd_sasl_type = dovecot' && \
     postconf -e 'smtpd_sasl_path = private/auth' && \
     postconf -e 'smtpd_sasl_auth_enable = yes' && \
     postconf -e 'maillog_file = /dev/stdout' && \
@@ -16,12 +17,19 @@ RUN postconf -e 'smtpd_sasl_type = dovecot' && \
     postconf -e 'virtual_transport = lmtp:unix:private/dovecot-lmtp' && \
     postconf -M submission/inet='submission inet n - n - - smtpd'
 
-COPY nasmail/ /opt/nasmail/
-
 # Postfix (smtp, submission)
 EXPOSE 25 587
-
 VOLUME [ "/opt/tls", "/opt/users" ]
+
+# Dovecot static configuration
+RUN mv -f /opt/nasmail/dovecot.conf /etc/dovecot/dovecot.conf && \
+    mkdir -p /var/vmail && \
+    addgroup --gid 5000 dockervmail && \
+    adduser --ingroup dockervmail --uid 5000 --home /var/vmail --shell /bin/false --disabled-password --gecos "" dockervmail
+
+# Dovecot (imap, imaps)
+EXPOSE 143 993
+VOLUME [ "/var/vmail" ]
 
 ENTRYPOINT [ "/opt/nasmail/docker-entrypoint.sh" ]
 CMD [ "postfix", "start-fg" ]
