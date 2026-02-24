@@ -4,6 +4,8 @@ Lightweight container optimized for NAS hosted private or archived mail. By desi
 
 Inspired by [ServerContainers/minimail](https://github.com/ServerContainers/minimail).
 
+**TODO:** build and push to [GitHub Container Registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry).
+
 ## Environment Variables
 
 - `MAIL_HOST`: fully qualified domain name, defaults to nasmail.local
