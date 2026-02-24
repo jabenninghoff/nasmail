@@ -50,7 +50,7 @@ do
         email="$(grep @${domain} /tmp/all-emails | head -n 1)"
         entrypoint_log "warning: no postmaster found for domain ${domain}, using ${email}"
         echo "postmaster@${domain} ${email}" >> /etc/postfix/virtual
-        echo "postmaster@${domain} ${email}" >> /tmp/all-emails
+        echo "postmaster@${domain}" >> /tmp/all-emails
     fi
 done
 
