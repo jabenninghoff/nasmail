@@ -1,6 +1,8 @@
 # nasmail
 
-Lightweight container optimized for NAS hosted private or archived mail. By design, the mail server only accepts email for configured users or aliases, and rejects relayed mail. It can be used to store an online archive of a retired email account, or as a private server for monitoring messages. It is intended to be deployed without a [MX record](https://en.wikipedia.org/wiki/MX_record) - instead, clients connect directly to send mail. Using a non-standard port will additionally reduce the chance of spam.
+Lightweight container optimized for NAS hosted private or archived mail.
+
+By design, the mail server only accepts email for configured users or aliases, and rejects relayed mail. It can be used to store an online archive of a retired email account, or as a private server for monitoring messages. It is intended to be deployed without a [MX record](https://en.wikipedia.org/wiki/MX_record) - instead, clients connect directly to send mail. Using a non-standard port will additionally reduce the chance of spam.
 
 Inspired by [ServerContainers/minimail](https://github.com/ServerContainers/minimail).
 
@@ -8,7 +10,7 @@ Inspired by [ServerContainers/minimail](https://github.com/ServerContainers/mini
 
 ## Environment Variables
 
-- `MAIL_HOST`: fully qualified domain name, defaults to nasmail.local
+- `MAIL_HOST`: fully qualified domain name, defaults to mail.nasmail.local
 - `TLS_KEY`: path to private key, in PEM format
 - `TLS_CERT`: path to public certificate, in PEM format
 
@@ -16,7 +18,7 @@ Inspired by [ServerContainers/minimail](https://github.com/ServerContainers/mini
 
 ```yaml
 volumes:
-  - /usr/syno/etc/certificate/_archive/<directory>:/opt/tls
+  - /usr/syno/etc/certificate/_archive/<directory>:/opt/tls:ro
 environment:
   - TLS_KEY=/opt/tls/privkey.pem
   - TLS_CERT=/opt/tls/fullchain.pem
