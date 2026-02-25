@@ -1,6 +1,7 @@
 services:
   nasmail:
     build: .
+    image: ghcr.io/jabenninghoff/nasmail:main
     restart: unless-stopped
     ports:
       - "25:25" # SMTP
