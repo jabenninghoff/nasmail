@@ -6,7 +6,9 @@ By design, the mail server only accepts email for configured users or aliases, a
 
 Inspired by [ServerContainers/minimail](https://github.com/ServerContainers/minimail).
 
-**TODO:** build and push to [GitHub Container Registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry).
+## Docker Image
+
+nasmail uses GitHub Actions to build and publish a Docker image to the GitHub Container Registry, based on the official GitHub [Documentation](https://docs.github.com/en/packages/managing-github-packages-using-github-actions-workflows/publishing-and-installing-a-package-with-github-actions), with updated dependencies and help from a helpful DEV [article](https://dev.to/natilou/automating-tag-creation-release-and-docker-image-publishing-with-github-actions-49jg). The included `compose.yaml` file can be used to deploy the container using `docker compose`.
 
 ## Environment Variables
 
