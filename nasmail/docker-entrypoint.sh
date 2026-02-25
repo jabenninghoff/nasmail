@@ -8,7 +8,7 @@ entrypoint_log() {
 
 if [ -z "${MAIL_HOST}" ]
 then
-    MAIL_HOST='nasmail.local'
+    MAIL_HOST='mail.nasmail.local'
     entrypoint_log "warning: MAIL_HOST not set, using default hostname ${MAIL_HOST}"
 fi
 
@@ -40,7 +40,7 @@ do
 done </opt/users/nasmail-users
 
 # extract unique email domains and configure postfix
-EMAIL_DOMAINS=$(awk -F@ '{print $2}' /tmp/all-emails | sort -u | xargs)
+EMAIL_DOMAINS="$(awk -F@ '{print $2}' /tmp/all-emails | sort -u | xargs)"
 entrypoint_log "using domains ${EMAIL_DOMAINS}"
 postconf -e "virtual_mailbox_domains = ${EMAIL_DOMAINS}"
 
