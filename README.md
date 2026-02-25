@@ -16,7 +16,7 @@ Pull the most recent (development) image using:
 docker pull ghcr.io/jabenninghoff/nasmail:main
 ```
 
-**TODO:** enable multi-platform builds using [build-push-action](https://github.com/docker/build-push-action/tree/v6/), release v1.0.0.
+**TODO:** release v1.0.0.
 
 ## Environment Variables
 
