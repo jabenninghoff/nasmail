@@ -13,6 +13,7 @@ RUN mkdir -p /opt/tls /opt/users && \
     postconf -e 'smtpd_forbid_unauth_pipelining = no' && \
     postconf -e 'maillog_file = /dev/stdout' && \
     postconf -e 'alias_maps =' && \
+    # don't deliver to local mailboxes, only virtual mailboxes
     postconf -e 'mydestination =' && \
     postconf -e 'virtual_mailbox_maps = texthash:/etc/postfix/vmailbox' && \
     postconf -e 'virtual_alias_maps = texthash:/etc/postfix/virtual' && \
