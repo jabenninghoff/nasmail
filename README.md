@@ -10,6 +10,14 @@ Inspired by [ServerContainers/minimail](https://github.com/ServerContainers/mini
 
 nasmail uses GitHub Actions to build and publish a Docker image to the GitHub Container Registry, based on the official GitHub [Documentation](https://docs.github.com/en/packages/managing-github-packages-using-github-actions-workflows/publishing-and-installing-a-package-with-github-actions), with updated dependencies and help from a helpful DEV [article](https://dev.to/natilou/automating-tag-creation-release-and-docker-image-publishing-with-github-actions-49jg). The included `compose.yaml` file can be used to deploy the container using `docker compose`.
 
+Pull the most recent (development) image using:
+
+```sh
+docker pull ghcr.io/jabenninghoff/nasmail:main
+```
+
+**TODO:** enable multi-platform builds using [build-push-action](https://github.com/docker/build-push-action/tree/v6/), release v1.0.0.
+
 ## Environment Variables
 
 - `MAIL_HOST`: fully qualified domain name, defaults to mail.nasmail.local
