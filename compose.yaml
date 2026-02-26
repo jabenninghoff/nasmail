@@ -1,5 +1,6 @@
 services:
   nasmail:
+    # build: .
     image: ghcr.io/jabenninghoff/nasmail
     restart: unless-stopped
     ports:
