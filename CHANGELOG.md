@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.3](https://github.com/jabenninghoff/nasmail/compare/v1.0.2...v1.0.3) (2026-02-26)
+
+
+### Bug Fixes
+
+* log nasmail version at startup ([a184393](https://github.com/jabenninghoff/nasmail/commit/a1843936237af6a170fef791a8cfb451244cd1c0))
+
 ## 1.0.2 (2026-02-25)
 
 Remove [release-please-action](https://github.com/googleapis/release-please-action) as it is preventing proper release tagging somehow. Release manually until resolved.
