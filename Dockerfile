@@ -9,7 +9,7 @@ RUN mkdir -p /opt/tls /opt/users && \
     postconf -e 'smtpd_sasl_type = dovecot' && \
     postconf -e 'smtpd_sasl_path = private/auth' && \
     postconf -e 'smtpd_sasl_auth_enable = yes' && \
-    # workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=538809
+    # TODO: workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=538809
     postconf -e 'smtpd_forbid_unauth_pipelining = no' && \
     postconf -e 'maillog_file = /dev/stdout' && \
     postconf -e 'alias_maps =' && \
