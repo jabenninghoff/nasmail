@@ -2,7 +2,8 @@ FROM alpine:3.23
 
 RUN apk add --no-cache runit postfix dovecot dovecot-lmtpd
 
-ENV NASMAIL_VERSION="1.0.4-dev"
+ARG NASMAIL_VERSION="1.0.4-dev"
+ENV NASMAIL_VERSION="${NASMAIL_VERSION}"
 COPY nasmail/ /opt/nasmail/
 
 # Postfix static configuration
