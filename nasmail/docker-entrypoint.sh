@@ -1,14 +1,12 @@
 #!/bin/sh
 set -e
 
-VERSION="1.0.3"
-
 entrypoint_log() {
     # match format of postfix, dovecot logs
     echo "$(date '+%b %d %H:%M:%S') nasmail: $*"
 }
 
-entrypoint_log "version ${VERSION} starting"
+entrypoint_log "version ${NASMAIL_VERSION:-unknown} starting"
 
 if [ -z "${MAIL_HOST}" ]
 then
