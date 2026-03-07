@@ -2,7 +2,7 @@ FROM alpine:3.23
 
 RUN apk add --no-cache runit postfix dovecot dovecot-lmtpd
 
-ARG NASMAIL_VERSION="1.0.4-dev"
+ARG NASMAIL_VERSION
 ENV NASMAIL_VERSION="${NASMAIL_VERSION}"
 COPY nasmail/ /opt/nasmail/
 
