@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.4](https://github.com/jabenninghoff/nasmail/compare/v1.0.3...v1.0.4) (2026-03-08)
+
+
+### Bug Fixes
+
+* add nasmail version build argument ([a558837](https://github.com/jabenninghoff/nasmail/commit/a5588376c22e2d017ff1363a24c10c96e18db2e0))
+* automate version with version.txt ([10f207c](https://github.com/jabenninghoff/nasmail/commit/10f207cd04411a5d7449f7b859f7e0aa39a7034e))
+
 ## [1.0.3](https://github.com/jabenninghoff/nasmail/compare/v1.0.2...v1.0.3) (2026-02-26)
 
 
