@@ -1,7 +1,7 @@
 FROM alpine:3.23
 
 # runit 2.3.0-r0 postfix 3.10.8-r0 dovecot 2.4.2-r1
-RUN apk add --no-cache runit postfix dovecot dovecot-lmtpd
+RUN apk upgrade --no-cache && apk add --no-cache runit postfix dovecot dovecot-lmtpd
 
 ARG NASMAIL_VERSION
 ENV NASMAIL_VERSION="${NASMAIL_VERSION}"
