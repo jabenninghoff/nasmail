@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.5](https://github.com/jabenninghoff/nasmail/compare/v1.0.4...v1.0.5) (2026-03-14)
+
+
+### Bug Fixes
+
+* update docker GitHub Actions ([f19e5c8](https://github.com/jabenninghoff/nasmail/commit/f19e5c87f46b5fc6bd370fed3160b1c1a729fc15))
+
 ## [1.0.4](https://github.com/jabenninghoff/nasmail/compare/v1.0.3...v1.0.4) (2026-03-13)
 
 
