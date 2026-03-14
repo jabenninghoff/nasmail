@@ -12,10 +12,10 @@ assignees: ''
 Update Alpine Linux and packages:
 
 - [ ] [Alpine](https://alpinelinux.org/releases/) *(new release branch each May and November)*
-- [ ] [Postfix](https://pkgs.alpinelinux.org/packages?name=postfix&branch=v3.23&repo=&arch=&origin=&flagged=&maintainer=)
-- [ ] [Dovecot](https://pkgs.alpinelinux.org/packages?name=dovecot&branch=v3.23&repo=&arch=&origin=&flagged=&maintainer=)
-- [ ] [Dovecot LMTP](https://pkgs.alpinelinux.org/packages?name=dovecot-lmtpd&branch=v3.23&repo=&arch=&origin=&flagged=&maintainer=)
-- [ ] [runit](https://pkgs.alpinelinux.org/packages?name=runit&branch=v3.23&repo=&arch=&origin=&flagged=&maintainer=)
+- [ ] `./tests/apk-upgrade.sh`
+- [ ] [Postfix](https://www.postfix.org/announcements.html)
+- [ ] [Dovecot](https://github.com/dovecot/core/releases)
+- [ ] [runit](https://github.com/g-pape/runit/releases)
 
 New versions use `feat:`, bug fixes and security updates use `fix:`. Note [breaking changes](https://www.conventionalcommits.org).
 
@@ -23,12 +23,12 @@ New versions use `feat:`, bug fixes and security updates use `fix:`. Note [break
 
 Update GitHub Actions:
 
-- [ ] [release-please](https://github.com/googleapis/release-please-action/)
+- [ ] [release-please-action](https://github.com/googleapis/release-please-action/)
 - [ ] [checkout](https://github.com/actions/checkout/)
-- [ ] [docker/login](https://github.com/docker/login-action/)
-- [ ] [docker/metadata](https://www.github.com/docker/metadata-action/)
-- [ ] [docker/setup-buildx](https://github.com/docker/setup-buildx-action/)
-- [ ] [docker/build-push](https://github.com/docker/build-push-action/)
+- [ ] [docker/login-action](https://github.com/docker/login-action/)
+- [ ] [docker/metadata-action](https://www.github.com/docker/metadata-action/)
+- [ ] [docker/setup-buildx-action](https://github.com/docker/setup-buildx-action/)
+- [ ] [docker/build-push-action](https://github.com/docker/build-push-action/)
 - [ ] [attest-build-provenance](https://github.com/actions/attest-build-provenance/)
 
 ### Docker
@@ -39,6 +39,7 @@ Update GitHub Actions:
 
 Run tests:
 
+- [ ] `apk-list.sh`
 - [ ] `postconf-defaults.sh`
 - [ ] `postconf.sh`
 - [ ] `recipients.sh`
