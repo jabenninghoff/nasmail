@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.1.0](https://github.com/jabenninghoff/nasmail/compare/v1.0.4...v1.1.0) (2026-03-31)
+
+
+### Features
+
+* upgrade dovecot from 2.4.2 to 2.4.3 ([8e5800b](https://github.com/jabenninghoff/nasmail/commit/8e5800b394616f2564f597de4b98269b2cb82752))
+
+
+### Bug Fixes
+
+* add Dependabot version updates ([f7ea964](https://github.com/jabenninghoff/nasmail/commit/f7ea9646ca07f50b8e3c0c3675f61708c51f35cd))
+* pin GitHub actions to improve security ([2012ca8](https://github.com/jabenninghoff/nasmail/commit/2012ca8134d17726ea0f0a24e24c783b79613bd4))
+* update docker GitHub Actions ([f19e5c8](https://github.com/jabenninghoff/nasmail/commit/f19e5c87f46b5fc6bd370fed3160b1c1a729fc15))
+
 ## [1.0.4](https://github.com/jabenninghoff/nasmail/compare/v1.0.3...v1.0.4) (2026-03-13)
 
 
