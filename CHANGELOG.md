@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.1.1](https://github.com/jabenninghoff/nasmail/compare/v1.1.0...v1.1.1) (2026-04-13)
+
+
+### Bug Fixes
+
+* bump docker/login-action from 4.0.0 to 4.1.0 ([96585ab](https://github.com/jabenninghoff/nasmail/commit/96585ab81592dcbad8987810b1112f5260c9115b))
+* bump googleapis/release-please-action from 4.4.0 to 4.4.1 ([164bfef](https://github.com/jabenninghoff/nasmail/commit/164bfefcc06aeba955b6d315fe9bbb744c7c4e95))
+* update dovecot to 2.4.3-r1 ([5f4833a](https://github.com/jabenninghoff/nasmail/commit/5f4833af70c22933ae8dddebdf6d5e22c3de8113))
+
 ## [1.1.0](https://github.com/jabenninghoff/nasmail/compare/v1.0.4...v1.1.0) (2026-03-31)
 
 
