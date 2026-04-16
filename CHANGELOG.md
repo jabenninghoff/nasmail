@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.2](https://github.com/jabenninghoff/nasmail/compare/v1.1.1...v1.1.2) (2026-04-16)
+
+
+### Bug Fixes
+
+* upgrade alpine to 3.23.4 ([e391ff9](https://github.com/jabenninghoff/nasmail/commit/e391ff9284d5a85ac1b12cec710467328a0eff20))
+
 ## [1.1.1](https://github.com/jabenninghoff/nasmail/compare/v1.1.0...v1.1.1) (2026-04-13)
 
 
