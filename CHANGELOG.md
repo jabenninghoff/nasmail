@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.3](https://github.com/jabenninghoff/nasmail/compare/v1.1.2...v1.1.3) (2026-04-20)
+
+
+### Bug Fixes
+
+* bump docker/build-push-action from 7.0.0 to 7.1.0 ([d5723cc](https://github.com/jabenninghoff/nasmail/commit/d5723ccfcf19d024c57c65ad0bb372777b1a7c40))
+
 ## [1.1.2](https://github.com/jabenninghoff/nasmail/compare/v1.1.1...v1.1.2) (2026-04-16)
 
 
