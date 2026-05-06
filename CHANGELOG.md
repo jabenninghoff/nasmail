@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.1.3](https://github.com/jabenninghoff/nasmail/compare/v1.1.2...v1.1.3) (2026-05-06)
+
+
+### Bug Fixes
+
+* bump docker/build-push-action from 7.0.0 to 7.1.0 ([d5723cc](https://github.com/jabenninghoff/nasmail/commit/d5723ccfcf19d024c57c65ad0bb372777b1a7c40))
+* bump googleapis/release-please-action from 4.4.1 to 5.0.0 ([952c774](https://github.com/jabenninghoff/nasmail/commit/952c774af7be19459bf454d80b0206e94a6a6d61))
+* upgrade postfix from 3.10.8 to 3.10.9 ([cc9507f](https://github.com/jabenninghoff/nasmail/commit/cc9507fceb453b29541018fe4711ca77f8762319))
+
 ## [1.1.2](https://github.com/jabenninghoff/nasmail/compare/v1.1.1...v1.1.2) (2026-04-16)
 
 
