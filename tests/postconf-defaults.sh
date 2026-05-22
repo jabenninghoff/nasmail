@@ -1,7 +1,16 @@
 #!/bin/sh
 # check for changes to postconf default configuration
 # requires: docker-build.sh
-docker run --rm --entrypoint postconf nasmail:dev -d | colordiff -u snapshot-postconf-defaults.txt -
+DOCKER_RUN='docker run --rm --hostname nasmail.test --entrypoint sh'
+IMAGE='nasmail:dev'
+COMMAND='postconf -d'
+SNAPSHOT='snapshot-postconf-defaults.txt'
 
-echo 'snapshot using: docker run --rm --entrypoint postconf nasmail:dev -d >snapshot-postconf-defaults.txt'
-echo 'docker run --rm --entrypoint postconf nasmail:dev -d >snapshot-postconf-defaults.txt' | pbcopy
+[ -f "$SNAPSHOT" ] || touch "$SNAPSHOT"
+
+if ! $DOCKER_RUN "$IMAGE" -c "$COMMAND" | colordiff -u "$SNAPSHOT" -
+then
+	echo "snapshot using: $DOCKER_RUN $IMAGE -c '$COMMAND' >$SNAPSHOT"
+	echo "$DOCKER_RUN $IMAGE -c '$COMMAND' >$SNAPSHOT" | pbcopy
+    exit 1
+fi
