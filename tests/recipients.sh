@@ -25,7 +25,7 @@ RCPT To: dockervmail@mail.nasmail.test
 
 DATA
 Subject: Recipients Test Email
-This is a test email form recipients.sh.
+This is a test email from recipients.sh.
 .
 QUIT
 
