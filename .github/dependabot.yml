@@ -10,7 +10,7 @@ updates:
     cooldown:
       default-days: 7
     commit-message:
-      prefix: "feat"
+      prefix: "feat" # alpine updates are always features
 
   - package-ecosystem: "github-actions"
     directory: "/"
@@ -19,4 +19,4 @@ updates:
     cooldown:
       default-days: 7
     commit-message:
-      prefix: "fix"
+      prefix: "fix" # actions updates are always fixes
