@@ -16,12 +16,6 @@ Pull the latest (stable) image using:
 docker pull ghcr.io/jabenninghoff/nasmail
 ```
 
-Pull the most recent (development) image using:
-
-```sh
-docker pull ghcr.io/jabenninghoff/nasmail:edge
-```
-
 ## Environment Variables
 
 - `MAIL_HOST`: fully qualified domain name, defaults to mail.nasmail.local
