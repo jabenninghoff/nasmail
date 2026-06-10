@@ -1,8 +1,8 @@
 FROM alpine:3.24.0@sha256:a2d49ea686c2adfe3c992e47dc3b5e7fa6e6b5055609400dc2acaeb241c829f4
 
-# runit 2.3.0-r0 postfix 3.10.10-r0 dovecot 2.4.3-r1
+# dovecot 2.4.3-r1 postfix 3.11.3-r0 runit 2.3.1-r0
 # major updates to runit, postfix, or dovecot are features, other updates are fixes
-RUN apk upgrade --no-cache && apk add --no-cache runit postfix dovecot dovecot-lmtpd
+RUN apk upgrade --no-cache && apk add --no-cache dovecot dovecot-lmtpd postfix runit
 
 ARG NASMAIL_VERSION
 ENV NASMAIL_VERSION="${NASMAIL_VERSION}"
