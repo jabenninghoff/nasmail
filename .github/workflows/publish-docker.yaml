@@ -1,9 +1,11 @@
 # https://docs.github.com/en/packages/managing-github-packages-using-github-actions-workflows/publishing-and-installing-a-package-with-github-actions
+# https://github.com/alpine-docker/git/blob/master/.github/workflows/build.yml
 
 name: Publish Docker
 
 on:
   push:
+    branches: [ main ]
     tags: [ 'v*' ]
   pull_request:
     branches: [ main ]
@@ -41,7 +43,7 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
-            type=ref,event=pr
+            type=edge,branch=$repo.default_branch
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
 
@@ -54,8 +56,10 @@ jobs:
         with:
           context: .
           build-args: NASMAIL_VERSION=${{ env.NASMAIL_VERSION }}
-          push: true
-          platforms: linux/amd64,linux/arm64
+          # don't push on PR, load instead
+          platforms: ${{ github.event_name == 'pull_request' && 'linux/amd64' || 'linux/amd64,linux/arm64' }}
+          load: ${{ github.event_name == 'pull_request' }}
+          push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           sbom: ${{ github.event_name != 'pull_request' }}
