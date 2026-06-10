@@ -1,4 +1,4 @@
-# ignore local testing files
+# ignore compose test files
 .env
 tls
 users

@@ -8,7 +8,7 @@ Inspired by [ServerContainers/minimail](https://github.com/ServerContainers/mini
 
 ## Docker Image
 
-nasmail uses GitHub Actions to build and publish a Docker image to the GitHub Container Registry, based on the official GitHub [Documentation](https://docs.github.com/en/packages/managing-github-packages-using-github-actions-workflows/publishing-and-installing-a-package-with-github-actions), with updated dependencies and help from a helpful DEV [article](https://dev.to/natilou/automating-tag-creation-release-and-docker-image-publishing-with-github-actions-49jg). The included `compose.yaml` file can be used to deploy the container using `docker compose`.
+nasmail uses GitHub Actions to build and publish a Docker image to the GitHub Container Registry, based on the official GitHub [Documentation](https://docs.github.com/en/packages/managing-github-packages-using-github-actions-workflows/publishing-and-installing-a-package-with-github-actions), with updated dependencies and help from a helpful DEV [article](https://dev.to/natilou/automating-tag-creation-release-and-docker-image-publishing-with-github-actions-49jg) and [alpine-docker](https://github.com/alpine-docker). The included `compose.yaml` file can be adapted to deploy the container using `docker compose` (make sure to set environment variables using `.env`; a template for testing is included as `test.env`).
 
 Pull the latest (stable) image using:
 
@@ -19,7 +19,7 @@ docker pull ghcr.io/jabenninghoff/nasmail
 Pull the most recent (development) image using:
 
 ```sh
-docker pull ghcr.io/jabenninghoff/nasmail:main
+docker pull ghcr.io/jabenninghoff/nasmail:edge
 ```
 
 ## Environment Variables
