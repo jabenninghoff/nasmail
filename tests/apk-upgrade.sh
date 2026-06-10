@@ -22,13 +22,13 @@ check_apk_upgrade() {
     fi
 }
 
-echo "apk-upgrade: pulling latest image from $LATEST" 
-docker pull -q "$LATEST" >/dev/null || die "apk-upgrade: failed to pull latest image from $LATEST"
-
-check_apk_upgrade "$LATEST"
 if [ -z "$(docker images -q "$DEV")" ]
 then
     echo "apk-upgrade: no local image found for $DEV, skipping check"
 else
     check_apk_upgrade "$DEV"
 fi
+
+echo "apk-upgrade: pulling latest image from $LATEST" 
+docker pull -q "$LATEST" >/dev/null || die "apk-upgrade: failed to pull latest image from $LATEST"
+check_apk_upgrade "$LATEST"
