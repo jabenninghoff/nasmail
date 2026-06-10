@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.6](https://github.com/jabenninghoff/nasmail/compare/v1.1.5...v1.1.6) (2026-06-10)
+
+
+### Bug Fixes
+
+* add docker image digests ([1de5abb](https://github.com/jabenninghoff/nasmail/commit/1de5abb483931064e80922cc03511ab5d78a15c4))
+* only publish releases to ghcr.io ([ae12703](https://github.com/jabenninghoff/nasmail/commit/ae12703bdf31b1455205f62d5c8a17f84c136afe))
+
 ## [1.1.5](https://github.com/jabenninghoff/nasmail/compare/v1.1.4...v1.1.5) (2026-06-10)
 
 
