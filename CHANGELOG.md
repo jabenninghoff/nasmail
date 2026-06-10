@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.1.5](https://github.com/jabenninghoff/nasmail/compare/v1.1.4...v1.1.5) (2026-06-10)
+
+
+### Bug Fixes
+
+* adopt alpine-docker mage conventions ([089482c](https://github.com/jabenninghoff/nasmail/commit/089482cb7cb74bf7600d2749c344292b3e4b29d9))
+* bump docker/build-push-action from 7.1.0 to 7.2.0 ([1b4cbb8](https://github.com/jabenninghoff/nasmail/commit/1b4cbb8f178bf9e6e572fbef7cdc1b0b85542634))
+* bump docker/login-action from 4.1.0 to 4.2.0 ([dc425cd](https://github.com/jabenninghoff/nasmail/commit/dc425cd33dde74b2e7fadb1f11390b3e2c7a73ba))
+* bump docker/metadata-action from 6.0.0 to 6.1.0 ([ede8ba1](https://github.com/jabenninghoff/nasmail/commit/ede8ba1e4922d5dd65eadaba21f89afd14628347))
+* bump docker/setup-buildx-action from 4.0.0 to 4.1.0 ([fe3631b](https://github.com/jabenninghoff/nasmail/commit/fe3631b5d5546480133dba527643e4dbea5d9a4a))
+* hardcode default branch ([c416d43](https://github.com/jabenninghoff/nasmail/commit/c416d438bd3a594c50646934265b661a07096267))
+* improve Publish Docker GitHub Action ([fdf079f](https://github.com/jabenninghoff/nasmail/commit/fdf079fe2817adebcd062c0ef3c090d2a416faeb))
+* limit docker builds ([186bc15](https://github.com/jabenninghoff/nasmail/commit/186bc1555a01aafa6498a2fb8345fae9fc74bff6))
+* update openssl from 3.5.6 to 3.5.7 ([1bb3e52](https://github.com/jabenninghoff/nasmail/commit/1bb3e528e1f7b88e19882982e7d2719f2edf1d93))
+
 ## [1.1.4](https://github.com/jabenninghoff/nasmail/compare/v1.1.3...v1.1.4) (2026-05-17)
 
 
