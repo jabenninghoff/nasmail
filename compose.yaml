@@ -1,7 +1,7 @@
+# nasmail compose example
 services:
   nasmail:
-    # build: .
-    image: ghcr.io/jabenninghoff/nasmail
+    image: ghcr.io/jabenninghoff/nasmail:latest
     restart: unless-stopped
     ports:
       - "25:25" # SMTP
