@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.2.0](https://github.com/jabenninghoff/nasmail/compare/v1.1.6...v1.2.0) (2026-06-10)
+
+
+### Features
+
+* bump alpine from 3.23.4 to 3.24.0 ([130ca39](https://github.com/jabenninghoff/nasmail/commit/130ca393bc63c9b01ea1df42af326a667d25fb8a))
+
+
+### Bug Fixes
+
+* bump actions/checkout from 6.0.2 to 6.0.3 ([5be0701](https://github.com/jabenninghoff/nasmail/commit/5be07018c04e307e83312e24b9ff4e32ca325ae8))
+* update snapshots for alpine 3.24.0 ([1ea0f8a](https://github.com/jabenninghoff/nasmail/commit/1ea0f8aec5ae55d79c873ace32df8d6eb6ffb5bd))
+
 ## [1.1.6](https://github.com/jabenninghoff/nasmail/compare/v1.1.5...v1.1.6) (2026-06-10)
 
 
