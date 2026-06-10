@@ -1,4 +1,4 @@
-FROM alpine:3.23.4
+FROM alpine:3.23.4@sha256:5b10f432ef3da1b8d4c7eb6c487f2f5a8f096bc91145e68878dd4a5019afde11
 
 # runit 2.3.0-r0 postfix 3.10.10-r0 dovecot 2.4.3-r1
 RUN apk upgrade --no-cache && apk add --no-cache runit postfix dovecot dovecot-lmtpd
