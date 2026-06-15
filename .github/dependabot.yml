@@ -8,7 +8,7 @@ updates:
     schedule:
       interval: "weekly"
     cooldown:
-      default-days: 7
+      default-days: 1
     commit-message:
       prefix: "feat" # alpine updates are always features
 
