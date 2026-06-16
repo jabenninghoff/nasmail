@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.3.0](https://github.com/jabenninghoff/nasmail/compare/v1.2.0...v1.3.0) (2026-06-16)
+
+
+### Features
+
+* add support for older Raspberry Pi ([0215d10](https://github.com/jabenninghoff/nasmail/commit/0215d10fbbb78ed015a104ab719b590c7b284c5f))
+* bump alpine from 3.24.0 to 3.24.1 ([393b86a](https://github.com/jabenninghoff/nasmail/commit/393b86af731a91a633c143e367fb00dfef91634d))
+
+
+### Bug Fixes
+
+* update snapshots for alpine 3.24.0 ([212f5ec](https://github.com/jabenninghoff/nasmail/commit/212f5ec21dfad55b0d571ba0602a509c4c3342c0))
+
 ## [1.2.0](https://github.com/jabenninghoff/nasmail/compare/v1.1.6...v1.2.0) (2026-06-10)
 
 
