@@ -10,6 +10,8 @@ Inspired by [ServerContainers/minimail](https://github.com/ServerContainers/mini
 
 nasmail uses GitHub Actions to build and publish a Docker image to the GitHub Container Registry, based on the official GitHub [Documentation](https://docs.github.com/en/packages/managing-github-packages-using-github-actions-workflows/publishing-and-installing-a-package-with-github-actions), with updated dependencies and help from a helpful DEV [article](https://dev.to/natilou/automating-tag-creation-release-and-docker-image-publishing-with-github-actions-49jg) and [alpine-docker](https://github.com/alpine-docker). The included `compose.yaml` file can be adapted to deploy the container using `docker compose` (make sure to set environment variables using `.env`; a template for testing is included as `test.env`).
 
+Currently, new images are published for each new release only; there are no development images (`edge` or `main`). All pull requests and merges to main build and load to test and validate the image. Images are built for Intel (`amd64`), 64-bit ARM (`arm64`: Apple, Raspberry Pi) and 32-bit ARM (`arm/v6`, `arm/v7`: older Raspberry Pi hardware).
+
 Pull the latest (stable) image using:
 
 ```sh
@@ -67,3 +69,9 @@ The image exports IMAP (143) and IMAPS (993), and the volume `/var/vmail` (for m
 ## runit
 
 nasmail uses [runit](https://smarden.org/runit/) to manage Postfix and Dovecot as system services.
+
+## Automation
+
+nasmail uses [conventional commits](https://www.conventionalcommits.org) and the [Release Please Action](https://github.com/googleapis/release-please-action) to automatically generate release notes (in `CHANGELOG.md`) and releases, with versions stored in `version.txt`. `version.txt` is manually updated by adding a `-dev` suffix when starting development on a new version; Release Please automatically updates the file when tagging a release.
+
+nasmail is configured to update the base alpine Docker image and all GitHub Actions in `dependabot.yml`. All OS ([Alpine Linux](https://alpinelinux.org)) updates are treated as features, (`feat:`) and all GitHub Actions updates are treated as fixes (`fix:`). A separate job, `apk-upgrades.yaml`, checks for updated Alpine packages weekly and on-demand and sends an email alert if updates are available through job failure notification.
