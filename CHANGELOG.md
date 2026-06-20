@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.1](https://github.com/jabenninghoff/nasmail/compare/v1.3.0...v1.3.1) (2026-06-20)
+
+
+### Bug Fixes
+
+* upgrade postfix from 3.11.3 to 3.11.4 ([1c7a865](https://github.com/jabenninghoff/nasmail/commit/1c7a865e79c22b5aab9cd3fda661f099317c3c52))
+
 ## [1.3.0](https://github.com/jabenninghoff/nasmail/compare/v1.2.0...v1.3.0) (2026-06-16)
 
 
