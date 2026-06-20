@@ -75,3 +75,11 @@ nasmail uses [runit](https://smarden.org/runit/) to manage Postfix and Dovecot a
 nasmail uses [conventional commits](https://www.conventionalcommits.org) and the [Release Please Action](https://github.com/googleapis/release-please-action) to automatically generate release notes (in `CHANGELOG.md`) and releases, with versions stored in `version.txt`. `version.txt` is manually updated by adding a `-dev` suffix when starting development on a new version; Release Please automatically updates the file when tagging a release.
 
 nasmail is configured to update the base alpine Docker image and all GitHub Actions in `dependabot.yml`. All OS ([Alpine Linux](https://alpinelinux.org)) updates are treated as features, (`feat:`) and all GitHub Actions updates are treated as fixes (`fix:`). A separate job, `apk-upgrades.yaml`, checks for updated Alpine packages weekly and on-demand and sends an email alert if updates are available through job failure notification.
+
+## Tests
+
+Tests are run using simple shell scripts and text snapshots, which track changes to installed Alpine packages, default Postfix configuration, and running Postfix configuration. After building a new development image using `docker-build.sh`, all tests can be run from the `tests` directory using `image-tests.sh`. A semi-automated test suite to verify that Postfix accepts mail for defined virtual users and aliases only is included as `recipients.sh`, which is run after significant updates to Postfix. Manual testing of Dovecot is conducted using `compose.yaml` and `test.env` (copied to `.env`) and [Thunderbird](https://www.thunderbird.net).
+
+The full Docker Compose test environment uses dnsmasq to redirect `.local` to localhost (127.0.0.1), and a trusted self-signed certificate generated using macOS Keychain Access.
+
+After tests pass, the version header in the `Dockerfile` can be updated using the `docker-header.sh` script.
