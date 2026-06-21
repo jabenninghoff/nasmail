@@ -9,10 +9,10 @@ services:
       - "587:587" # Submission
       - "993:993" # IMAPS
     volumes:
-      - ${CERTS}:/opt/tls:ro
-      - ${USERS}:/opt/users:ro
-      - ${VMAIL}:/var/vmail
+      - ./tls:/opt/tls:ro
+      - ./users:/opt/users:ro
+      - ./vmail:/var/vmail
     environment:
-      - MAIL_HOST=${MAIL_HOST}
-      - TLS_KEY=${TLS_KEY}
-      - TLS_CERT=${TLS_CERT}
+      - MAIL_HOST=mail.nasmail.test
+      - TLS_KEY=/opt/tls/privkey.pem
+      - TLS_CERT=/opt/tls/fullchain.pem
