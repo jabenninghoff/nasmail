@@ -8,7 +8,7 @@ Inspired by [ServerContainers/minimail](https://github.com/ServerContainers/mini
 
 ## Docker Image
 
-nasmail uses GitHub Actions to build and publish a Docker image to the GitHub Container Registry, based on the official GitHub [Documentation](https://docs.github.com/en/packages/managing-github-packages-using-github-actions-workflows/publishing-and-installing-a-package-with-github-actions), with updated dependencies and help from a helpful DEV [article](https://dev.to/natilou/automating-tag-creation-release-and-docker-image-publishing-with-github-actions-49jg) and [alpine-docker](https://github.com/alpine-docker). The included `compose.yaml` file can be adapted to deploy the container using `docker compose` (make sure to set environment variables using `.env`; a template for testing is included as `test.env`).
+nasmail uses GitHub Actions to build and publish a Docker image to the GitHub Container Registry, based on the official GitHub [Documentation](https://docs.github.com/en/packages/managing-github-packages-using-github-actions-workflows/publishing-and-installing-a-package-with-github-actions), with updated dependencies and help from a helpful DEV [article](https://dev.to/natilou/automating-tag-creation-release-and-docker-image-publishing-with-github-actions-49jg) and [alpine-docker](https://github.com/alpine-docker). The included `compose.yaml` file can be adapted to deploy the container using `docker compose`.
 
 Currently, new images are published for each new release only; there are no development images (`edge` or `main`). All pull requests and merges to main build and load to test and validate the image. Images are built for Intel (`amd64`), 64-bit ARM (`arm64`: Apple, Raspberry Pi) and 32-bit ARM (`arm/v6`, `arm/v7`: older Raspberry Pi hardware).
 
@@ -78,7 +78,7 @@ nasmail is configured to update the base alpine Docker image and all GitHub Acti
 
 ## Tests
 
-Tests are run using simple shell scripts and text snapshots, which track changes to installed Alpine packages, default Postfix configuration, and running Postfix configuration. After building a new development image using `docker-build.sh`, all tests can be run from the `tests` directory using `image-tests.sh`. A semi-automated test suite to verify that Postfix accepts mail for defined virtual users and aliases only is included as `recipients.sh`, which is run after significant updates to Postfix. Manual testing of Dovecot is conducted using `compose.yaml` and `test.env` (copied to `.env`) and [Thunderbird](https://www.thunderbird.net).
+Tests are run using simple shell scripts and text snapshots, which track changes to installed Alpine packages, default Postfix configuration, and running Postfix configuration. After building a new development image using `docker-build.sh`, all tests can be run from the `tests` directory using `image-tests.sh`. A semi-automated test suite to verify that Postfix accepts mail for defined virtual users and aliases only is included as `recipients.sh`, which is run after significant updates to Postfix. Manual testing of Dovecot is conducted using `compose.yaml` and [Thunderbird](https://www.thunderbird.net).
 
 The full Docker Compose test environment uses dnsmasq to redirect `.local` to localhost (127.0.0.1), and a trusted self-signed certificate generated using macOS Keychain Access.
 

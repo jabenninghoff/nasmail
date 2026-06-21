@@ -1,5 +1,4 @@
 # ignore compose test files
-.env
 tls
 users
 vmail
