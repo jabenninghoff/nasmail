@@ -10,6 +10,28 @@ Inspired by [ServerContainers/minimail](https://github.com/ServerContainers/mini
 
 nasmail uses GitHub Actions to build and publish a Docker image to the GitHub Container Registry, based on the official GitHub [Documentation](https://docs.github.com/en/packages/managing-github-packages-using-github-actions-workflows/publishing-and-installing-a-package-with-github-actions), with updated dependencies and help from a helpful DEV [article](https://dev.to/natilou/automating-tag-creation-release-and-docker-image-publishing-with-github-actions-49jg) and [alpine-docker](https://github.com/alpine-docker). The included `compose.yaml` file can be adapted to deploy the container using `docker compose`.
 
+Make sure to update the `image` section of the `compose.yaml`, a complete production file should resemble:
+
+```yaml
+services:
+  nasmail:
+    image: ghcr.io/jabenninghoff/nasmail:<version>
+    restart: unless-stopped
+    ports:
+      - "25:25" # SMTP
+      - "143:143" # IMAP
+      - "587:587" # Submission
+      - "993:993" # IMAPS
+    volumes:
+      - /usr/syno/etc/certificate/_archive/<directory>:/opt/nasmail/tls:ro
+      - /full/path/to/users:/opt/nasmail/users:ro
+      - /full/path/to/vmail:/var/vmail
+    environment:
+      - MAIL_HOST=mail.nasmail.test
+      - TLS_KEY=/opt/nasmail/tls/privkey.pem
+      - TLS_CERT=/opt/nasmail/tls/fullchain.pem
+```
+
 Currently, new images are published for each new release only; there are no development images (`edge` or `main`). All pull requests and merges to main build and load to test and validate the image. Images are built for Intel (`amd64`), 64-bit ARM (`arm64`: Apple, Raspberry Pi) and 32-bit ARM (`arm/v6`, `arm/v7`: older Raspberry Pi hardware).
 
 Pull the latest (stable) image using:
@@ -28,15 +50,15 @@ docker pull ghcr.io/jabenninghoff/nasmail
 
 ```yaml
 volumes:
-  - /usr/syno/etc/certificate/_archive/<directory>:/opt/tls:ro
+  - /usr/syno/etc/certificate/_archive/<directory>:/opt/nasmail/tls:ro
 environment:
-  - TLS_KEY=/opt/tls/privkey.pem
-  - TLS_CERT=/opt/tls/fullchain.pem
+  - TLS_KEY=/opt/nasmail/tls/privkey.pem
+  - TLS_CERT=/opt/nasmail/tls/fullchain.pem
 ```
 
 ## Users
 
-Users are defined in `/opt/users/nasmail-users`, using the [passwd](https://doc.dovecot.org/2.4.3/core/config/auth/databases/passwd_file.html) file format, using the following format:
+Users are defined in `/opt/nasmail/users/nasmail-users`, using the [passwd](https://doc.dovecot.org/2.4.3/core/config/auth/databases/passwd_file.html) file format, using the following format:
 
 ```passwd
 nasmail@nasmail.local:{BLF-CRYPT}$2y$05$hTm9v3j7tLLwKpbpwwCXTOMYwTdmFaARo7MLzXuTrjACToEJ9999y:::postmaster@nasmail.local abuse@nasmail.local:
@@ -54,7 +76,7 @@ The static configuration enables Dovecot SASL authentication, directs mail logs 
 
 The docker entrypoint script sets the Postfix hostname (FQDN), parses `nasmail-users` to create virtual users, aliases, and domains, and configures TLS if `TLS_KEY` and `TLS_CERT` are set. If using TLS, the script requires TLS encryption for SASL authentication and the MSA.
 
-The image exports SMTP (25) and submission (587), and the volumes `/opt/tls` (for certificates) and `/opt/users` (for users).
+The image exports SMTP (25) and submission (587), and the volumes `/opt/nasmail/tls` (for certificates) and `/opt/nasmail/users` (for users).
 
 ## Dovecot
 

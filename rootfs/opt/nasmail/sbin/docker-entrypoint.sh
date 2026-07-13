@@ -17,11 +17,11 @@ fi
 entrypoint_log "using hostname ${MAIL_HOST}"
 postconf -e "myhostname = ${MAIL_HOST}"
 
-if [ ! -f '/opt/users/nasmail-users' ]
+if [ ! -f '/opt/nasmail/users/nasmail-users' ]
 then
-    entrypoint_log "warning: /opt/users/nasmail-users not found, using default credentials 'nasmail@nasmail.local:nasmail'"
+    entrypoint_log "warning: /opt/nasmail/users/nasmail-users not found, using default credentials 'nasmail@nasmail.local:nasmail'"
     # shellcheck disable=SC2016
-    echo 'nasmail@nasmail.local:{BLF-CRYPT}$2y$05$hTm9v3j7tLLwKpbpwwCXTOMYwTdmFaARo7MLzXuTrjACToEJ9999y:' > /opt/users/nasmail-users
+    echo 'nasmail@nasmail.local:{BLF-CRYPT}$2y$05$hTm9v3j7tLLwKpbpwwCXTOMYwTdmFaARo7MLzXuTrjACToEJ9999y:' > /opt/nasmail/users/nasmail-users
 fi
 
 # parse nasmail-users and generate postfix maps
@@ -39,7 +39,7 @@ do
         echo "${alias} ${email}" >> /etc/postfix/virtual
         echo "${alias}" >> /tmp/all-emails
     done
-done </opt/users/nasmail-users
+done </opt/nasmail/users/nasmail-users
 
 # extract unique email domains and configure postfix
 EMAIL_DOMAINS="$(awk -F@ '{print $2}' /tmp/all-emails | sort -u | xargs)"

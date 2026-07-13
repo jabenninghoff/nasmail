@@ -6,10 +6,10 @@ RUN apk upgrade --no-cache && apk add --no-cache dovecot dovecot-lmtpd postfix r
 
 ARG NASMAIL_VERSION
 ENV NASMAIL_VERSION="${NASMAIL_VERSION}"
-COPY nasmail/ /opt/nasmail/
+COPY rootfs/ /
 
 # Postfix static configuration
-RUN mkdir -p /opt/tls /opt/users && \
+RUN mkdir -p /opt/nasmail/tls /opt/nasmail/users && \
     postconf -e 'smtpd_sasl_type = dovecot' && \
     postconf -e 'smtpd_sasl_path = private/auth' && \
     postconf -e 'smtpd_sasl_auth_enable = yes' && \
@@ -26,11 +26,10 @@ RUN mkdir -p /opt/tls /opt/users && \
 
 # Postfix (smtp, submission)
 EXPOSE 25 587
-VOLUME [ "/opt/tls", "/opt/users" ]
+VOLUME [ "/opt/nasmail/tls", "/opt/nasmail/users" ]
 
 # Dovecot static configuration
-RUN mv -f /opt/nasmail/dovecot.conf /etc/dovecot/dovecot.conf && \
-    mkdir -p /var/vmail && \
+RUN mkdir -p /var/vmail && \
     addgroup --gid 5000 dockervmail && \
     adduser --ingroup dockervmail --uid 5000 --home /var/vmail --shell /bin/false --disabled-password --gecos "" dockervmail
 
@@ -38,5 +37,5 @@ RUN mv -f /opt/nasmail/dovecot.conf /etc/dovecot/dovecot.conf && \
 EXPOSE 143 993
 VOLUME [ "/var/vmail" ]
 
-ENTRYPOINT [ "/opt/nasmail/docker-entrypoint.sh" ]
+ENTRYPOINT [ "/opt/nasmail/sbin/docker-entrypoint.sh" ]
 CMD [ "runsvdir", "-P", "/opt/nasmail/runit" ]
