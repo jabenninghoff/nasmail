@@ -1,7 +1,8 @@
 # nasmail compose example
 services:
   nasmail:
-    image: ghcr.io/jabenninghoff/nasmail:latest
+    # image: ghcr.io/jabenninghoff/nasmail:version # uncomment and use with specific version number for production
+    image: nasmail:dev # use with docker-build.sh for local development, remove for production
     restart: unless-stopped
     ports:
       - "25:25" # SMTP
@@ -9,10 +10,10 @@ services:
       - "587:587" # Submission
       - "993:993" # IMAPS
     volumes:
-      - ./tls:/opt/tls:ro
-      - ./users:/opt/users:ro
+      - ./tls:/opt/nasmail/tls:ro
+      - ./users:/opt/nasmail/users:ro
       - ./vmail:/var/vmail
     environment:
       - MAIL_HOST=mail.nasmail.test
-      - TLS_KEY=/opt/tls/privkey.pem
-      - TLS_CERT=/opt/tls/fullchain.pem
+      - TLS_KEY=/opt/nasmail/tls/privkey.pem
+      - TLS_CERT=/opt/nasmail/tls/fullchain.pem
