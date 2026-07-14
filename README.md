@@ -10,6 +10,14 @@ Inspired by [ServerContainers/minimail](https://github.com/ServerContainers/mini
 
 nasmail uses GitHub Actions to build and publish a Docker image to the GitHub Container Registry, based on the official GitHub [Documentation](https://docs.github.com/en/packages/managing-github-packages-using-github-actions-workflows/publishing-and-installing-a-package-with-github-actions), with updated dependencies and help from a helpful DEV [article](https://dev.to/natilou/automating-tag-creation-release-and-docker-image-publishing-with-github-actions-49jg) and [alpine-docker](https://github.com/alpine-docker). The included `compose.yaml` file can be adapted to deploy the container using `docker compose`.
 
+Pull the latest (stable) image using:
+
+```sh
+docker pull ghcr.io/jabenninghoff/nasmail
+```
+
+New images are published for each new release only; there are no development images (`edge` or `main`). All pull requests and merges to main build and load the image (without publishing) for testing and validation. Images are built for Intel (`amd64`), 64-bit ARM (`arm64`: Apple, Raspberry Pi) and 32-bit ARM (`arm/v6`, `arm/v7`: older Raspberry Pi hardware).
+
 Make sure to update the `image` section of the `compose.yaml`, a complete production file should resemble:
 
 ```yaml
@@ -30,14 +38,6 @@ services:
       - MAIL_HOST=mail.nasmail.test
       - TLS_KEY=/opt/nasmail/tls/privkey.pem
       - TLS_CERT=/opt/nasmail/tls/fullchain.pem
-```
-
-Currently, new images are published for each new release only; there are no development images (`edge` or `main`). All pull requests and merges to main build and load to test and validate the image. Images are built for Intel (`amd64`), 64-bit ARM (`arm64`: Apple, Raspberry Pi) and 32-bit ARM (`arm/v6`, `arm/v7`: older Raspberry Pi hardware).
-
-Pull the latest (stable) image using:
-
-```sh
-docker pull ghcr.io/jabenninghoff/nasmail
 ```
 
 ## Environment Variables

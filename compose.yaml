@@ -4,6 +4,7 @@ services:
     # image: ghcr.io/jabenninghoff/nasmail:version # uncomment and use with specific version number for production
     image: nasmail:dev # use with docker-build.sh for local development, remove for production
     restart: unless-stopped
+    hostname: nasmail.test
     ports:
       - "25:25" # SMTP
       - "143:143" # IMAP
