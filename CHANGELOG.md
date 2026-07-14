@@ -2,6 +2,12 @@
 
 ## [1.4.0](https://github.com/jabenninghoff/nasmail/compare/v1.3.1...v1.4.0) (2026-07-14)
 
+**Important:** for the 1.4.0 release, the filesystem layout and published volumes have changed to better conform to common naming conventions, moving all files under `/opt` to `/opt/nasmail`. There are two breaking changes:
+
+* `/opt/tls` is now `/opt/nasmail/tls`
+* `/opt/users` is now `/opt/nasmail/users`
+
+Update your `compose.yaml` accordingly; an example production Compose file has been added to the README.
 
 ### Features
 
