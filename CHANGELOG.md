@@ -1,5 +1,25 @@
 # Changelog
 
+## [1.4.0](https://github.com/jabenninghoff/nasmail/compare/v1.3.1...v1.4.0) (2026-07-14)
+
+
+### Features
+
+* update filesystem layout from nasvcs ([f9ad609](https://github.com/jabenninghoff/nasmail/commit/f9ad609abbae6992efbd71e49a8895452862afae))
+
+
+### Bug Fixes
+
+* bump actions/attest from 4.1.0 to 4.1.1 ([d347811](https://github.com/jabenninghoff/nasmail/commit/d347811c2e850dc8348ba03ca5b3594cf6754129))
+* bump actions/checkout from 6.0.3 to 7.0.0 ([4e24e06](https://github.com/jabenninghoff/nasmail/commit/4e24e06909c6e83490e3b0cfbe742d7efa82bb87))
+* bump docker/build-push-action from 7.2.0 to 7.3.0 ([0246e50](https://github.com/jabenninghoff/nasmail/commit/0246e5067bcd1f04e36a5ca96f420ca6206bdd76))
+* bump docker/login-action from 4.2.0 to 4.4.0 ([6c9cee4](https://github.com/jabenninghoff/nasmail/commit/6c9cee448ec3cd2ba953f0520644ad0bdffa464b))
+* bump docker/metadata-action from 6.1.0 to 6.2.0 ([700b41e](https://github.com/jabenninghoff/nasmail/commit/700b41e5f2b98940520b3c2e4e7deb9d398d85fd))
+* bump docker/setup-buildx-action from 4.1.0 to 4.2.0 ([d74db02](https://github.com/jabenninghoff/nasmail/commit/d74db02a53550407ace6179328fc5c7f483067b0))
+* bump docker/setup-qemu-action from 4.1.0 to 4.2.0 ([d00f55a](https://github.com/jabenninghoff/nasmail/commit/d00f55ab580193b607b32d645d79ec8cdbcd4a00))
+* merge compose and env files ([4edfe81](https://github.com/jabenninghoff/nasmail/commit/4edfe810bc1b1904c43ed682ee93e771cc4f7048))
+* upgrade postfix from 3.11.4 to 3.11.5 ([5904712](https://github.com/jabenninghoff/nasmail/commit/59047121ac82eb05306dc67337a3eb1e6c6b051f))
+
 ## [1.3.1](https://github.com/jabenninghoff/nasmail/compare/v1.3.0...v1.3.1) (2026-06-20)
 
 
