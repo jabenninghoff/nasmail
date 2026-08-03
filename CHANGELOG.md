@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.4.1](https://github.com/jabenninghoff/nasmail/compare/v1.4.0...v1.4.1) (2026-08-03)
+
+
+### Bug Fixes
+
+* bump actions/attest from 4.1.1 to 4.2.0 ([52a292a](https://github.com/jabenninghoff/nasmail/commit/52a292a53a0fe49c46d556c83d557316171f1311))
+* bump actions/checkout from 7.0.0 to 7.0.1 ([2c2e6e9](https://github.com/jabenninghoff/nasmail/commit/2c2e6e98d7a46b47596d8ea9db3549a7c00aaf7f))
+* bump docker/login-action from 4.4.0 to 4.5.2 ([04ada8a](https://github.com/jabenninghoff/nasmail/commit/04ada8ab02846de58586c1435ce4e20d8d39a4e2))
+* upgrade dovecot to 2.4.4 ([ffd6d29](https://github.com/jabenninghoff/nasmail/commit/ffd6d296bcf5a27b1a1e023fa9076cf298b48ac0))
+
 ## [1.4.0](https://github.com/jabenninghoff/nasmail/compare/v1.3.1...v1.4.0) (2026-07-14)
 
 **Important:** for the 1.4.0 release, the filesystem layout and published volumes have changed to better conform to common naming conventions, moving all files under `/opt` to `/opt/nasmail`. There are two breaking changes:
