@@ -100,8 +100,23 @@ nasmail is configured to update the base alpine Docker image and all GitHub Acti
 
 ## Tests
 
-Tests are run using simple shell scripts and text snapshots, which track changes to installed Alpine packages, default Postfix configuration, and running Postfix configuration. After building a new development image using `docker-build.sh`, all tests can be run from the `tests` directory using `image-tests.sh`. A semi-automated test suite to verify that Postfix accepts mail for defined virtual users and aliases only is included as `recipients.sh`, which is run after significant updates to Postfix. Manual testing of Dovecot is conducted using `compose.yaml` and [Thunderbird](https://www.thunderbird.net).
+nasmail has two test suites:
+
+`image-tests.sh` runs the following tests, which require a locally built docker image using `docker-build.sh`:
+
+- `apk-list.sh`: errors if installed `apk` packages have changed
+- `postconf-defaults.sh`: errors if the postconf default configuration has changed
+- `postconf.sh`: errors if the postconf static configuration (from Dockerfile) has changed
+- `startup.sh`: starts a nasmail container and immediately exits
+- `docker-header.sh`: places the Dockerfile version header on the clipboard
+- `apk-upgrade.sh`: errors if updated `apk` packages are available
+
+After the image tests pass, the version header in can be pasted in the `Dockerfile` (for changes).
+
+`live-tests.sh` runs the following tests, which additionally require a working Docker Compose environment, including valid `MAIL_HOST`, TLS configuration, `users` file (`nasmail-users`), and a `vmail` directory:
+
+- `mail-recipients.sh`: validates server options, TLS configuration, and verifies that Postfix accepts mail for defined virtual users and aliases only
+
+Manual testing of Dovecot is conducted using `compose.yaml` and [Thunderbird](https://www.thunderbird.net).
 
 The full Docker Compose test environment uses dnsmasq to redirect `.local` to localhost (127.0.0.1), and a trusted self-signed certificate generated using macOS Keychain Access.
-
-After tests pass, the version header in the `Dockerfile` can be updated using the `docker-header.sh` script.
