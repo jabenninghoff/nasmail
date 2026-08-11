@@ -111,7 +111,7 @@ nasmail has two test suites:
 - `docker-header.sh`: places the Dockerfile version header on the clipboard
 - `apk-upgrade.sh`: errors if updated `apk` packages are available
 
-After the image tests pass, the version header in can be pasted in the `Dockerfile` (for changes).
+After the image tests pass, the version header can be pasted in the `Dockerfile` (for changes).
 
 `live-tests.sh` runs the following tests, which additionally require a working Docker Compose environment, including valid `MAIL_HOST`, TLS configuration, `users` file (`nasmail-users`), and a `vmail` directory:
 
