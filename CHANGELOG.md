@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.4.2](https://github.com/jabenninghoff/nasmail/compare/v1.4.1...v1.4.2) (2026-08-12)
+
+
+### Bug Fixes
+
+* add live tests using swaks ([bf9ae0d](https://github.com/jabenninghoff/nasmail/commit/bf9ae0d0b652868076696bcab9e88d794a07e1c3))
+* bump actions/attest from 4.2.0 to 4.2.1 ([47092ad](https://github.com/jabenninghoff/nasmail/commit/47092ad8655152bc2ca2f88cfcf6cf94268688e3))
+* bump docker/login-action from 4.5.2 to 4.6.0 ([b81734b](https://github.com/jabenninghoff/nasmail/commit/b81734b46e115a7b33810593c973f91c885012f7))
+* upgrade postfix to 3.11.6 ([094d1e0](https://github.com/jabenninghoff/nasmail/commit/094d1e0e8c7ff6322e539f80c0da17b6506ad841))
+
 ## [1.4.1](https://github.com/jabenninghoff/nasmail/compare/v1.4.0...v1.4.1) (2026-08-03)
 
 
