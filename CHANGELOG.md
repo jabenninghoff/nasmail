@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.4.3](https://github.com/jabenninghoff/nasmail/compare/v1.4.2...v1.4.3) (2026-08-30)
+
+
+### Bug Fixes
+
+* bump actions/attest from 4.2.1 to 4.2.2 ([7013bed](https://github.com/jabenninghoff/nasmail/commit/7013bed040b298cc35a36e2801e5b59c89659268))
+* bump docker/setup-buildx-action from 4.2.0 to 4.3.0 ([38382f3](https://github.com/jabenninghoff/nasmail/commit/38382f30d5d4720fc90570d89305b3861b7c0f8c))
+* upgrade dovecot to 2.4.5 ([21cfc3a](https://github.com/jabenninghoff/nasmail/commit/21cfc3a75bb5ee5a879b51c1c17669a2daf4d578))
+
 ## [1.4.2](https://github.com/jabenninghoff/nasmail/compare/v1.4.1...v1.4.2) (2026-08-12)
 
 
