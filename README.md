@@ -58,7 +58,7 @@ environment:
 
 ## Users
 
-Users are defined in `/opt/nasmail/users/nasmail-users`, using the [passwd](https://doc.dovecot.org/2.4.3/core/config/auth/databases/passwd_file.html) file format, using the following format:
+Users are defined in `/opt/nasmail/users/nasmail-users`, using the [passwd](https://doc.dovecot.org/2.4.5/core/config/auth/databases/passwd_file.html) file format, using the following format:
 
 ```passwd
 nasmail@nasmail.local:{BLF-CRYPT}$2y$05$hTm9v3j7tLLwKpbpwwCXTOMYwTdmFaARo7MLzXuTrjACToEJ9999y:::postmaster@nasmail.local abuse@nasmail.local:
@@ -80,7 +80,7 @@ The image exports SMTP (25) and submission (587), and the volumes `/opt/nasmail/
 
 ## Dovecot
 
-Dovecot 2.4 introduced breaking [changes](https://doc.dovecot.org/2.4.3/installation/upgrade/2.3-to-2.4.html) in the configuration format. The Dovecot configuration is built from the official [Quick Configuration](https://doc.dovecot.org/2.4.3/core/config/quick.html) and [Docker image](https://github.com/dovecot/docker/tree/main/2.4.3), using the minimail configuration as a reference. To simplify the configuration, a single file, `dovecot.conf` is used.
+Dovecot 2.4 introduced breaking [changes](https://doc.dovecot.org/2.4.5/installation/upgrade/2.3-to-2.4.html) in the configuration format. The Dovecot configuration is built from the official [Quick Configuration](https://doc.dovecot.org/2.4.5/core/config/quick.html) and [Docker image](https://github.com/dovecot/docker/tree/4c980ddf087268bb5450be8107e69e5168f03707/2.4.3), using the minimail configuration as a reference. To simplify the configuration, a single file, `dovecot.conf` is used.
 
 The static configuration directs logs to standard output and standard error, sets standard mailboxes (Drafts, Junk, Sent, Trash), configures `/var/vmail` for mail storage using the Maildir format, enables SASL authentication, and mail delivery using LMTP.
 
