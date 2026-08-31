@@ -3,7 +3,7 @@
 on:
   workflow_dispatch:
   schedule:
-    - cron: '30 9 * * 5'
+    - cron: '30 9 * * 1'
       timezone: "America/Chicago"
 
 name: Check Packages
