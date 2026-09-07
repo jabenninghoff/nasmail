@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.4](https://github.com/jabenninghoff/nasmail/compare/v1.4.3...v1.4.4) (2026-09-07)
+
+
+### Bug Fixes
+
+* update alpine packages (dependencies) ([f4322b5](https://github.com/jabenninghoff/nasmail/commit/f4322b53ebe16c7625fc3c1ac70a607fe8fdc9df))
+
 ## [1.4.3](https://github.com/jabenninghoff/nasmail/compare/v1.4.2...v1.4.3) (2026-08-30)
 
 
