@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.4.5](https://github.com/jabenninghoff/nasmail/compare/v1.4.4...v1.4.5) (2026-09-14)
+
+
+### Bug Fixes
+
+* bump docker/setup-qemu-action from 4.2.0 to 4.3.0 ([562327f](https://github.com/jabenninghoff/nasmail/commit/562327f6414b1987d414838a8fed3b22bb1f2fc3))
+* upgrade postfix to 3.11.7 ([3bedbb4](https://github.com/jabenninghoff/nasmail/commit/3bedbb4ccd241e4d897b5b0b3fe25c6907f40a27))
+
 ## [1.4.4](https://github.com/jabenninghoff/nasmail/compare/v1.4.3...v1.4.4) (2026-09-07)
 
 
