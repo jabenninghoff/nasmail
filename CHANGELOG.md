@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.5.0](https://github.com/jabenninghoff/nasmail/compare/v1.4.5...v1.5.0) (2026-09-19)
+
+
+### Features
+
+* bump alpine from 3.24.1 to 3.24.2 ([a063f26](https://github.com/jabenninghoff/nasmail/commit/a063f26c0d2f2c5aff6e8f1b477483c79758e393))
+
+
+### Bug Fixes
+
+* update alpine packages (dependencies) ([5dcf97d](https://github.com/jabenninghoff/nasmail/commit/5dcf97d0373a142b48935a089675b5cabc53a8cf))
+
 ## [1.4.5](https://github.com/jabenninghoff/nasmail/compare/v1.4.4...v1.4.5) (2026-09-14)
 
 
