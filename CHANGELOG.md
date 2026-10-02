@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.5.1](https://github.com/jabenninghoff/nasmail/compare/v1.5.0...v1.5.1) (2026-10-02)
+
+
+### Bug Fixes
+
+* bump docker/build-push-action from 7.3.0 to 7.4.0 ([c0b623c](https://github.com/jabenninghoff/nasmail/commit/c0b623c3103246ee6ce6d71e149ae740b7ffa6fa))
+* bump docker/setup-buildx-action from 4.3.0 to 4.4.1 ([662d513](https://github.com/jabenninghoff/nasmail/commit/662d513a71b06f1668cad7cf473793a9c66e6f6f))
+* bump docker/setup-qemu-action from 4.3.0 to 4.4.0 ([51966d6](https://github.com/jabenninghoff/nasmail/commit/51966d64e59d229478645d0300291ed3ff7fb9c6))
+* update alpine packages (dependencies) ([c4ef126](https://github.com/jabenninghoff/nasmail/commit/c4ef1267ae161de30d1b4456c337cba5bed9dbdb))
+
 ## [1.5.0](https://github.com/jabenninghoff/nasmail/compare/v1.4.5...v1.5.0) (2026-09-19)
 
 
