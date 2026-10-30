@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.1](https://github.com/jabenninghoff/nasmail/compare/v1.6.0...v1.6.1) (2026-10-30)
+
+
+### Bug Fixes
+
+* bump docker/login-action from 4.6.0 to 4.7.0 ([c9e7953](https://github.com/jabenninghoff/nasmail/commit/c9e795305b82e0e2542eadc82bc020f171f77a77))
+
 ## [1.6.0](https://github.com/jabenninghoff/nasmail/compare/v1.5.2...v1.6.0) (2026-10-24)
 
 
