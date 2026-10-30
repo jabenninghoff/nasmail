@@ -6,7 +6,9 @@ updates:
   - package-ecosystem: "docker"
     directory: "/"
     schedule:
-      interval: "weekly"
+      interval: "cron"
+      cronjob: "0 9 * * 5"
+      timezone: "America/Chicago"
     cooldown:
       default-days: 1
     commit-message:
@@ -15,7 +17,9 @@ updates:
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "weekly"
+      interval: "cron"
+      cronjob: "0 9 * * 5"
+      timezone: "America/Chicago"
     cooldown:
       default-days: 7
     commit-message:
