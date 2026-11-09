@@ -7,7 +7,7 @@ updates:
     directory: "/"
     schedule:
       interval: "cron"
-      cronjob: "0 9 * * 5"
+      cronjob: "0 9 * * *"
       timezone: "America/Chicago"
     commit-message:
       prefix: "fix"
@@ -16,7 +16,7 @@ updates:
     directory: "/"
     schedule:
       interval: "cron"
-      cronjob: "0 9 * * 5"
+      cronjob: "0 9 * * *"
       timezone: "America/Chicago"
     cooldown:
       default-days: 7
