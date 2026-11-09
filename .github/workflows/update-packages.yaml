@@ -31,6 +31,7 @@ jobs:
       - name: Open pull request
         uses: peter-evans/create-pull-request@15733dbdfeedb4f7fdb73d13c6f5ac83b710fab8 # v8.1.2
         with:
+          token: ${{ secrets.GHCR_GITHUB_PAT }}
           branch: create-pull-request/update-packages
           delete-branch: true
           commit-message: 'fix: update alpine packages'
