@@ -1,0 +1,37 @@
+# https://docs.github.com/en/actions/reference/workflows-and-actions
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '30 9 * * *'
+      timezone: "America/Chicago"
+
+name: Update Packages
+
+permissions: read-all
+
+jobs:
+  update-packages:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Build image
+        run: docker build -t snapshot:dev .
+
+      - name: Regenerate snapshot-apk
+        working-directory: tests
+        run: docker run --rm --entrypoint sh snapshot:dev -c 'apk list --no-cache --installed --manifest' > snapshot-apk.txt
+
+      - name: Open pull request
+        uses: peter-evans/create-pull-request@15733dbdfeedb4f7fdb73d13c6f5ac83b710fab8 # v8.1.2
+        with:
+          branch: create-pull-request/update-packages
+          delete-branch: true
+          commit-message: 'fix: update alpine packages'
+          title: 'fix: update alpine packages'
