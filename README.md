@@ -116,6 +116,8 @@ After the image tests pass, the version header can be pasted in the `Dockerfile`
 
 - `mail-recipients.sh`: validates server options, TLS configuration, and verifies that Postfix accepts mail for defined virtual users and aliases only
 
+Image tests are run on GitHub as `image-tests.yaml`, but the live tests currently require a local test environment.
+
 Manual testing of Dovecot is conducted using `compose.yaml` and [Thunderbird](https://www.thunderbird.net).
 
 The full Docker Compose test environment uses dnsmasq to redirect `.local` to localhost (127.0.0.1), and a trusted self-signed certificate generated using macOS Keychain Access.
