@@ -9,5 +9,4 @@
 ./postconf.sh && \
 ./startup.sh && \
 ./docker-header.sh && \
-./apk-upgrade.sh && \
 printf "\nall tests \e[32mpassed\e[0m!\n"

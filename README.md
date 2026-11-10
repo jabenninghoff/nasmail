@@ -109,7 +109,6 @@ nasmail has two test suites:
 - `postconf.sh`: errors if the postconf static configuration (from Dockerfile) has changed
 - `startup.sh`: starts a nasmail container and immediately exits
 - `docker-header.sh`: places the Dockerfile version header on the clipboard
-- `apk-upgrade.sh`: errors if updated `apk` packages are available
 
 After the image tests pass, the version header can be pasted in the `Dockerfile` (for changes).
 
