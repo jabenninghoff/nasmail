@@ -86,4 +86,12 @@ else
     entrypoint_log "warning: TLS_KEY or TLS_CERT not set, TLS disabled"
 fi
 
+entrypoint_log "checking postfix configuration"
+postfix check
+
+entrypoint_log "checking dovecot configuration"
+doveconf -FC >/dev/null
+
+entrypoint_log "entrypoint script complete"
+
 exec "$@"
