@@ -16,7 +16,7 @@ fi
 
 [ -f "$SNAPSHOT" ] || touch "$SNAPSHOT"
 
-if ! $DOCKER_RUN "$IMAGE" -c "$COMMAND" | $DIFF -u "$SNAPSHOT" -
+if ! $DOCKER_RUN "$IMAGE" -c "$COMMAND" | "$DIFF" -u "$SNAPSHOT" -
 then
 	echo "snapshot using: $DOCKER_RUN $IMAGE -c '$COMMAND' >$SNAPSHOT"
 	echo "$DOCKER_RUN $IMAGE -c '$COMMAND' >$SNAPSHOT" | pbcopy
