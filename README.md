@@ -58,7 +58,7 @@ environment:
 
 ## Users
 
-Users are defined in `/opt/nasmail/users/nasmail-users`, using the [passwd](https://doc.dovecot.org/2.4.5/core/config/auth/databases/passwd_file.html) file format, using the following format:
+Users are defined in `/opt/nasmail/users/nasmail-users`, using the following [passwd](https://doc.dovecot.org/2.4.5/core/config/auth/databases/passwd_file.html) file format:
 
 ```passwd
 nasmail@nasmail.local:{BLF-CRYPT}$2y$05$hTm9v3j7tLLwKpbpwwCXTOMYwTdmFaARo7MLzXuTrjACToEJ9999y:::postmaster@nasmail.local abuse@nasmail.local:
