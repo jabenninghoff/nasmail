@@ -3,21 +3,21 @@
 # requires: docker compose, swaks
 
 fail() {
-    printf "\nMail recipients tests \e[31mFAILED\e[0m\n\n"
-    docker compose down -v
-    exit 1
+	printf "\nMail recipients tests \e[31mFAILED\e[0m\n\n"
+	docker compose down -v
+	exit 1
 }
 
 mail_to() {
-    rcpt=$1
-    result=$2
-    printf "trying RCPT To: %s (%s)\n" "$rcpt" "$result"
-    if swaks --server mail.nasmail.test --quit-after RCPT --from nasmail@nasmail.test --to "$rcpt" --no-hints --silent 2
-    then
-        [ "$result" = "expect_succeed" ] || fail
-    else
-        [ "$result" = "expect_fail" ] || fail
-    fi
+	rcpt=$1
+	result=$2
+	printf "trying RCPT To: %s (%s)\n" "$rcpt" "$result"
+	if swaks --server mail.nasmail.test --quit-after RCPT --from nasmail@nasmail.test --to "$rcpt" --no-hints --silent 2
+	then
+		[ "$result" = "expect_succeed" ] || fail
+	else
+		[ "$result" = "expect_fail" ] || fail
+	fi
 }
 
 docker compose up -d && printf "\nwaiting 3 seconds for mail server to start..." && sleep 3
