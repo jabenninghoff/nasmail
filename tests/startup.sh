@@ -4,7 +4,7 @@
 
 STARTUP_LOG="$(mktemp)"
 
-docker run --rm nasmail:dev sh | tee "${STARTUP_LOG}"
+docker run --rm --hostname nasmail.test nasmail:dev sh | tee "${STARTUP_LOG}"
 
 if [ "$(tail -1 "${STARTUP_LOG}" | cut -d' ' -f5-7)" != "entrypoint script complete" ]
 then
