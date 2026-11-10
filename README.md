@@ -96,7 +96,7 @@ nasmail uses [runit](https://smarden.org/runit/) to manage Postfix and Dovecot a
 
 nasmail uses [conventional commits](https://www.conventionalcommits.org) and the [Release Please Action](https://github.com/googleapis/release-please-action) to automatically generate release notes (in `CHANGELOG.md`) and releases, with versions stored in `version.txt`. `version.txt` is manually updated by adding a `-dev` suffix when starting development on a new version; Release Please automatically updates the file when tagging a release.
 
-nasmail is configured to update the base alpine Docker image and all GitHub Actions in `dependabot.yml`. All OS ([Alpine Linux](https://alpinelinux.org)) updates are treated as features, (`feat:`) and all GitHub Actions updates are treated as fixes (`fix:`). A separate job, `apk-upgrades.yaml`, checks for updated Alpine packages weekly and on-demand and sends an email alert if updates are available through job failure notification.
+nasmail is configured to update the base alpine Docker image and all GitHub Actions in `dependabot.yml`. All OS ([Alpine Linux](https://alpinelinux.org)) updates and GitHub Actions updates are treated as fixes (`fix:`). A separate job, `update-packages.yaml`, checks for updated Alpine packages by rebuilding the Docker image, updating the APK package snapshot (`snapshot-apk.txt`), and opening a pull request if there are any changes, using [peter-evans/create-pull-request](https://github.com/peter-evans/create-pull-request).
 
 ## Tests
 
