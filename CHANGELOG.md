@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.6.3](https://github.com/jabenninghoff/nasmail/compare/v1.6.2...v1.6.3) (2026-11-10)
+
+
+### Bug Fixes
+
+* check configuration in Docker entrypoint ([f1b921d](https://github.com/jabenninghoff/nasmail/commit/f1b921da077e61a249ecb99b76c66fcd25cf92c2))
+* update alpine packages (dependencies) ([74566d2](https://github.com/jabenninghoff/nasmail/commit/74566d267db14d47a632172789204927e5de9be4))
+
 ## [1.6.2](https://github.com/jabenninghoff/nasmail/compare/v1.6.1...v1.6.2) (2026-11-09)
 
 
