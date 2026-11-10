@@ -13,7 +13,7 @@ icu-data-en 78.1-r0
 icu-libs 78.1-r0
 keyutils-libs 1.6.3-r4
 krb5-conf 1.0-r2
-krb5-libs 1.22.2-r1
+krb5-libs 1.22.3-r0
 libapk 3.0.9-r0
 libbz2 1.0.8-r6
 libcap2 2.78-r0
