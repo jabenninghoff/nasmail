@@ -2,7 +2,7 @@
 # check for changes to installed packages
 # requires: docker-build.sh
 
-DOCKER_RUN='docker run --rm --entrypoint sh'
+DOCKER_RUN='docker run --rm --hostname nasmail.test --entrypoint sh'
 IMAGE='nasmail:dev'
 COMMAND='apk list --no-cache --installed --manifest'
 SNAPSHOT='snapshot-apk.txt'
@@ -16,7 +16,7 @@ fi
 
 [ -f "$SNAPSHOT" ] || touch "$SNAPSHOT"
 
-if ! $DOCKER_RUN "$IMAGE" -c "$COMMAND" | $DIFF -u "$SNAPSHOT" -
+if ! $DOCKER_RUN "$IMAGE" -c "$COMMAND" | "$DIFF" -u "$SNAPSHOT" -
 then
 	echo "snapshot using: $DOCKER_RUN $IMAGE -c '$COMMAND' >$SNAPSHOT"
 	echo "$DOCKER_RUN $IMAGE -c '$COMMAND' >$SNAPSHOT" | pbcopy
