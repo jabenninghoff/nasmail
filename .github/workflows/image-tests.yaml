@@ -1,0 +1,24 @@
+# https://docs.github.com/en/actions/reference/workflows-and-actions
+
+name: Docker Image Tests
+
+on:
+  pull_request:
+    branches: [ main ]
+
+permissions: read-all
+
+jobs:
+  update-packages:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Build image
+        run: ./docker-build.sh
+
+      - name: Run image tests
+        working-directory: tests
+        run: ./image-tests.sh
