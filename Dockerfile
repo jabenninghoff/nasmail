@@ -1,4 +1,4 @@
-FROM alpine:3.24.4@sha256:93b41ef40b1677fce8fcc64ff4af09daddfacf5040afde618bc46c1e2d1cc7d4
+FROM alpine:3.24.4@sha256:f59abe656b692d901e184be3445e084786602108599d2a51d229c0f5a48c71bf
 
 # dovecot 2.4.5-r0 postfix 3.11.7-r0 runit 2.3.1-r0
 # major updates to runit, postfix, or dovecot are features, other updates are fixes
