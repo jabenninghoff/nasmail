@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.4](https://github.com/jabenninghoff/nasmail/compare/v1.6.3...v1.6.4) (2026-11-11)
+
+
+### Bug Fixes
+
+* bump alpine from `93b41ef` to `f59abe6` ([73de54d](https://github.com/jabenninghoff/nasmail/commit/73de54d6a36a1418d2e8fdab5e09b782712d4e86))
+
 ## [1.6.3](https://github.com/jabenninghoff/nasmail/compare/v1.6.2...v1.6.3) (2026-11-10)
 
 
