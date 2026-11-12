@@ -7,7 +7,7 @@ updates:
     directory: "/"
     schedule:
       interval: "cron"
-      cronjob: "0 9 * * *"
+      cronjob: "0 17 * * *"
       timezone: "America/Chicago"
     commit-message:
       prefix: "fix" # Alpine updates are fixes
@@ -16,7 +16,7 @@ updates:
     directory: "/"
     schedule:
       interval: "cron"
-      cronjob: "0 9 * * *"
+      cronjob: "0 17 * * *"
       timezone: "America/Chicago"
     cooldown:
       default-days: 7
