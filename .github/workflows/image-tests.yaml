@@ -10,6 +10,8 @@ permissions: read-all
 
 jobs:
   docker-image-tests:
+    # Skip image tests for Dependabot GitHub Actions updates
+    if: ${{ !startsWith(github.head_ref, 'dependabot/github_actions') }}
     runs-on: ubuntu-latest
 
     steps:
