@@ -3,7 +3,7 @@
 on:
   workflow_dispatch:
   schedule:
-    - cron: '30 9 * * *'
+    - cron: '0 17 * * *'
       timezone: "America/Chicago"
 
 name: Update Packages
