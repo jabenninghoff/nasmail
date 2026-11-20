@@ -9,6 +9,8 @@ updates:
       interval: "cron"
       cronjob: "0 17 * * *"
       timezone: "America/Chicago"
+    cooldown:
+      default-days: 0
     commit-message:
       prefix: "fix" # Alpine updates are fixes
 
@@ -19,6 +21,6 @@ updates:
       cronjob: "0 17 * * *"
       timezone: "America/Chicago"
     cooldown:
-      default-days: 7
+      default-days: 3
     commit-message:
       prefix: "ci" # Actions updates are CI changes
