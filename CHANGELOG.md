@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.6.5](https://github.com/jabenninghoff/nasmail/compare/v1.6.4...v1.6.5) (2026-11-20)
+
+
+### Bug Fixes
+
+* bump docker/login-action from 4.7.0 to 4.8.0 ([23eb38e](https://github.com/jabenninghoff/nasmail/commit/23eb38e3248ae06a92ba40b6a2292fff3f45fa23))
+* update alpine packages ([62e19b7](https://github.com/jabenninghoff/nasmail/commit/62e19b793f73d0f97b4ba2bfe407e3ffe14e394e))
+* update cooldown settings ([18adac0](https://github.com/jabenninghoff/nasmail/commit/18adac086803016bbf536d85b0654b77a9e676e5))
+
 ## [1.6.4](https://github.com/jabenninghoff/nasmail/compare/v1.6.3...v1.6.4) (2026-11-11)
 
 
