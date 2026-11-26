@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.6.6](https://github.com/jabenninghoff/nasmail/compare/v1.6.5...v1.6.6) (2026-11-26)
+
+
+### Bug Fixes
+
+* update alpine packages ([2eb77f5](https://github.com/jabenninghoff/nasmail/commit/2eb77f5277f285dfb05f5d52ef6bce7f8704e3cf))
+* upgrade postfix to 3.11.8 ([c6346c7](https://github.com/jabenninghoff/nasmail/commit/c6346c7825b74e20ced3e5c266058ab35038aaaf))
+
 ## [1.6.5](https://github.com/jabenninghoff/nasmail/compare/v1.6.4...v1.6.5) (2026-11-20)
 
 
