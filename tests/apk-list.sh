@@ -19,6 +19,9 @@ fi
 if ! $DOCKER_RUN "$IMAGE" -c "$COMMAND" | "$DIFF" -u "$SNAPSHOT" -
 then
 	echo "snapshot using: $DOCKER_RUN $IMAGE -c '$COMMAND' >$SNAPSHOT"
-	echo "$DOCKER_RUN $IMAGE -c '$COMMAND' >$SNAPSHOT" | pbcopy
+	if command -v pbcopy >/dev/null 2>&1
+	then
+		echo "$DOCKER_RUN $IMAGE -c '$COMMAND' >$SNAPSHOT" | pbcopy
+	fi
 	exit 1
 fi
